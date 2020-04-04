@@ -1,0 +1,49 @@
+.page-games {
+    .game {
+        display: block;
+        position: relative;
+        text-decoration: none;
+        margin: var(--gutter) 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 200ms ease-in-out;
+
+        &:hover {
+            transform: scale3d(0.95, 0.95, 1);
+
+            .title {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+
+        .title {
+            position: absolute;
+            line-height: 100%;
+            width: 100%;
+            padding: 1em;
+            color: white;
+            font-size: 5em;
+            letter-spacing: 0.02em;
+            line-height: 0.7;
+            margin: 0;
+            text-align: center;
+            transition: transform 200ms ease-in-out;
+            text-shadow: 0px 0.05em 0.1em rgba(black, 0.25);
+        }
+    }
+
+    .links {
+        display: flex;
+
+        a {
+            text-decoration: none;
+            padding: 0.4em;
+            display: block;
+
+            &:hover {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+    }
+}

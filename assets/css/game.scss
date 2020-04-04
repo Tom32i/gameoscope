@@ -1,0 +1,24 @@
+.page-game {
+    img {
+        margin: var(--gutter) 0;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+
+        a {
+            height: 2.5rem;
+            padding-right: 1em;
+            margin-right: -0.5em;
+            text-decoration: none;
+            line-height: 1.6em;
+            font-size: 1.5em;
+            transition:  transform 200ms ease-in-out;
+
+            &:hover {
+                transform: translateX(-0.5em);
+            }
+        }
+    }
+}

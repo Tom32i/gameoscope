@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AppController!{% endblock %}
+{% block title %}Game-o-scope{% endblock %}
+{% block body_class 'page-games' %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block header %}
+    <h1>Game-o-scope</h1>
+    <nav class="links">
+        <a href="https://instagram.com/gamoscope" class="icon-instagram" title="Instagram"></a>
+        <a href="https://twitter.com/tom32i" class="icon-twitter" title="Twitter"></a>
+    </nav>
+{% endblock %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% block content %}
+    {% for game in games %}
+        {% set url = path('game', { game: game.slug }) %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/tom32i/Sites/gamoscope/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/tom32i/Sites/gamoscope/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
-    </ul>
-</div>
+        {% set preview = game.images|first %}
+        {% set size = dimensions('thumbnail') %}
+        <a class="game" href="{{ url }}">
+            <h2 class="title">{{ game.name }}</h2>
+            <img class="preview" title="{{ preview.slug }}" src="{{ image(preview.path, 'thumbnail') }}" width="{{ size.width }}" height="{{ size.height }}" />
+        </a>
+    {% endfor %}
 {% endblock %}

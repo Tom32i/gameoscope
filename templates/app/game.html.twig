@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ game.name }} sur Game-o-scope{% endblock %}
+{% block body_class 'page-game' %}
+
+{% block header %}
+    <nav class="menu">
+        <a href="{{ path('games') }}" class="icon-back" title="Retour aux jeux"></a>
+        <h1>{{ game.name }}</h1>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    {% set size = dimensions('full') %}
+    {% for image in game.images %}
+        <img class="preview" title="{{ image.slug }}" src="{{ image(image.path, 'full') }}" width="{{ size.width }}" height="{{ size.height }}" />
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a href="{{ path('games') }}" class="with-icon icon-back">
+            Retour aux jeux
+        </a>
+    </footer>
+{% endblock %}

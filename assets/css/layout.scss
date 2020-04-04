@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;900&display=swap');
+
+:root {
+  --gutter: 4em;
+}
+
+body {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $background;
+    color: $color-text;
+    padding: 0 2em;
+    perspective: 100vh;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.75rem; }
+h5 { font-size: 1.5rem; }
+
+img {
+    background-color: $color-text;
+    max-width: 100%;
+}
+
+a, a:visited {
+    max-width: 100%;
+    font-family: 'Kanit', sans-serif;
+    font-weight: normal;
+    color: $color-text;
+
+    &:active, &:hover {
+        color: $color-text-dark;
+    }
+
+    &.with-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        &:before {
+            margin-right: 0.4em;
+            position: absolute;
+            right: 100%;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2em 0 1em;
+    width: 100%;
+    max-width: 1280px;
+}
+
+.content {
+    max-width: 1920px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--gutter) 0;
+
+    a {
+        text-decoration: none;
+    }
+}

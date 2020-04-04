@@ -63,7 +63,7 @@ watch:
 	./node_modules/.bin/encore dev --watch
 
 build:
-	./node_modules/.bin/encore production
+	./node_modules/.bin/encore production --progress"
 
 thumbnail:
 	bin/console thumbnail:generate
@@ -117,25 +117,25 @@ lint-yaml:
 
 ## Upload photos (demo)
 upload@demo:
-	chmod -R 755 var/photos
-	rsync -arzv --progress var/photos/* tom32i@deployer.vm:/home/tom32i/family-photos/shared/var/photos #--delete
-	vendor/bin/dep thumbnail:generate deployer.vm
+	chmod -R 755 var/games
+	rsync -arzv --progress var/games/* tom32i@deployer.vm:/home/tom32i/gamoscope/shared/var/games #--delete
+	#vendor/bin/dep thumbnail:generate deployer.vm
 
 ## Upload photos (prod)
 upload@prod:
-	chmod -R 755 var/photos
-	rsync -arzv --progress var/photos/* tom32i@tom32i.fr:/home/tom32i/family-photos/shared/var/photos #--delete
-	vendor/bin/dep thumbnail:generate tom32i.fr
+	chmod -R 755 var/games
+	rsync -arzv --progress var/games/* tom32i@tom32i.fr:/home/tom32i/gamoscope/shared/var/games #--delete
+	#vendor/bin/dep thumbnail:generate tom32i.fr
 
 ## Download photos (demo)
 download@demo:
-	rsync -arzv --progress tom32i@deployer.vm:/home/tom32i/family-photos/shared/var/photos/* var/photos
-	vendor/bin/dep thumbnail:generate deployer.vm
+	rsync -arzv --progress tom32i@deployer.vm:/home/tom32i/gamoscope/shared/var/games/* var/games
+	#vendor/bin/dep thumbnail:generate deployer.vm
 
 ## Download photos (prod)
 download@prod:
-	rsync -arzv --progress tom32i@tom32i.fr:/home/tom32i/family-photos/shared/var/photos/* var/photos
-	vendor/bin/dep thumbnail:generate tom32i.fr
+	rsync -arzv --progress tom32i@tom32i.fr:/home/tom32i/gamoscope/shared/var/games/* var/games
+	#vendor/bin/dep thumbnail:generate tom32i.fr
 
 ##########
 # Custom #
