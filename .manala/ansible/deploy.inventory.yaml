@@ -9,7 +9,7 @@ all:
             vars:
                 deploy_releases: 3
                 deploy_strategy: git
-                deploy_strategy_git_repo: git@git.deployer.vm:/home/git/release/gameoscope.git
+                deploy_strategy_git_repo: git@tom32i.fr:/home/git/release/gameoscope.git
                 deploy_strategy_git_version: production
                 deploy_dir: /home/tom32i/gameoscope
                 deploy_tasks:
@@ -32,7 +32,7 @@ all:
             vars:
                 deploy_releases: 3
                 deploy_strategy: git
-                deploy_strategy_git_repo: git@git.deployer.vm:/home/git/release/gameoscope.git
+                deploy_strategy_git_repo: git@tom32i.fr:/home/git/release/gameoscope.git
                 deploy_strategy_git_version: staging
                 deploy_dir: /home/tom32i/gameoscope
                 deploy_tasks:
