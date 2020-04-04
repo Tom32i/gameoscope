@@ -1,25 +1,7 @@
 .SILENT:
 .PHONY: build
 
-## Colors
-COLOR_RESET   = \033[0m
-COLOR_INFO    = \033[32m
-COLOR_COMMENT = \033[33m
-
-## Help
-help:
-	printf "${COLOR_COMMENT}Usage:${COLOR_RESET}\n"
-	printf " make [target]\n\n"
-	printf "${COLOR_COMMENT}Available targets:${COLOR_RESET}\n"
-	awk '/^[a-zA-Z\-\_0-9\.@]+:/ { \
-		helpMessage = match(lastLine, /^## (.*)/); \
-		if (helpMessage) { \
-			helpCommand = substr($$1, 0, index($$1, ":")); \
-			helpMessage = substr(lastLine, RSTART + 3, RLENGTH); \
-			printf " ${COLOR_INFO}%-16s${COLOR_RESET} %s\n", helpCommand, helpMessage; \
-		} \
-	} \
-	{ lastLine = $$0 }' $(MAKEFILE_LIST)
+-include .manala/make/Makefile
 
 ###########
 # Install #
@@ -28,7 +10,7 @@ help:
 ## Install application
 install:
 	# Composer
-	bin/composer install --verbose
+	composer install --verbose
 	# Npm install
 	npm install
 
@@ -45,6 +27,24 @@ install@production:
 	composer install --verbose --no-progress --no-interaction --prefer-dist --optimize-autoloader --no-scripts --no-dev
 	# Npm
 	npm install
+
+##########
+# Warmup #
+##########
+
+warmup:
+	# Generate thumbnails
+
+# Note: This task is invoked after a deployment to staging
+warmup@staging: export APP_ENV = prod
+warmup@staging:
+	# Generate thumbnails
+
+# Note: This task is invoked after a deployment to production
+warmup@production: export APP_ENV = prod
+warmup@production:
+	# Generate thumbnails
+
 
 #######
 # Run #
@@ -63,21 +63,22 @@ watch:
 	./node_modules/.bin/encore dev --watch
 
 build:
-	./node_modules/.bin/encore production --progress"
+	./node_modules/.bin/encore production
+
+build@staging: build
+build@production: build
 
 thumbnail:
 	bin/console thumbnail:generate
 
-thumbnail@prod: export SYMFONY_ENV = prod
-thumbnail@prod:
-	bin/console thumbnail:generate
+thumbnail@production: export SYMFONY_ENV = prod
+thumbnail@production: thumbnail
 
 clear-thumbnail:
 	bin/console thumbnail:clear
 
-clear-thumbnail@prod: export SYMFONY_ENV = prod
-clear-thumbnail@prod:
-	bin/console thumbnail:clear
+clear-thumbnail@production: export SYMFONY_ENV = prod
+clear-thumbnail@production: clear-thumbnail
 
 ############
 # Security #

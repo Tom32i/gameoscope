@@ -1,0 +1,12 @@
+Host *
+    StrictHostKeyChecking no
+    HashKnownHosts        no
+    UserKnownHostsFile    /dev/null
+    LogLevel              ERROR
+
+Host tom32i.fr
+    User         tom32i
+    ForwardAgent yes
+Host deployer.vm
+    User         tom32i
+    ForwardAgent yes

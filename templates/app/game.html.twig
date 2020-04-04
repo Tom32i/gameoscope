@@ -3,11 +3,29 @@
 {% block title %}{{ game.name }} sur Game-o-scope{% endblock %}
 {% block body_class 'page-game' %}
 
-{% block header %}
-    <nav class="menu">
-        <a href="{{ path('games') }}" class="icon-back" title="Retour aux jeux"></a>
-        <h1>{{ game.name }}</h1>
-    </nav>
+{% block header_title %}
+    <a href="{{ path('games') }}" class="header-title-back icon-back">
+        {{ parent() }}
+    </a>
+{% endblock %}
+
+{% block sub_header %}
+    <div class="game-info">
+        <h2 class="game-title">
+            <span>{{ game.name }}</span>
+            <span class="game-year">{{ game.year|default(null) }}</span>
+        </h2>
+        {% if game.studio %}
+            <h3 class="game-studio">
+                par
+                {% if game.studio.url %}
+                    <a href="{{ game.studio.url }}">{{ game.studio.name }}</a>
+                {% else %}
+                    {{ game.studio.name|default(game.studio) }}
+                {% endif %}
+            </h3>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block content %}

@@ -11,7 +11,7 @@
       --gutter: 2em;
     }
 
-    .content {  max-width: 960px; }
+    .container {  max-width: 960px; }
 
     .page-games {
         .links {
@@ -19,18 +19,10 @@
         }
 
         .game {
-            //margin: 2em 0;
-
             .title {
                 font-size: 4em;
             }
         }
     }
-
-    /*.page-game {
-        img {
-            margin: 2em 0;
-        }
-    }*/
 }
 

@@ -2,6 +2,7 @@ $background: #eeeeee;
 
 $color-text-dark: #393e46;
 $color-text: lighten($color-text-dark, 20%);
+$color-text-light: lighten($color-text, 20%);
 
 // Icons
 $icomoon-font-family: "icons" !default;

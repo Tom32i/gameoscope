@@ -19,7 +19,7 @@ class AppController extends AbstractController
     public function games()
     {
         return $this->render('app/index.html.twig', [
-            'games' => $this->browser->list(),
+            'games' => $this->browser->list(['[date]' => false], ['[slug]' => true]),
         ]);
     }
 
@@ -28,7 +28,7 @@ class AppController extends AbstractController
      */
     public function game(string $game)
     {
-        $game = $this->browser->read($game);
+        $game = $this->browser->read($game, ['[slug]' => true]);
 
         if (!$game) {
             throw $this->createNotFoundException('Event not found');

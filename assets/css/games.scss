@@ -32,18 +32,4 @@
             text-shadow: 0px 0.05em 0.1em rgba(black, 0.25);
         }
     }
-
-    .links {
-        display: flex;
-
-        a {
-            text-decoration: none;
-            padding: 0.4em;
-            display: block;
-
-            &:hover {
-                transform: scale3d(1.1, 1.1, 1);
-            }
-        }
-    }
 }

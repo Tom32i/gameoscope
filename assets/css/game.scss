@@ -1,24 +1,41 @@
 .page-game {
-    img {
-        margin: var(--gutter) 0;
+    .game-info {
+        width: 100%;
+        margin: 2em 0 0 0;
     }
 
-    .menu {
+    .game-title {
+        font-size: 2rem;
+        width: 100%;
         display: flex;
-        align-items: center;
+        justify-content: space-between;
+        font-weight: normal;
+        text-transform: none;
+        letter-spacing: initial;
+        margin: 0 0 0.4em 0;
+    }
 
-        a {
-            height: 2.5rem;
-            padding-right: 1em;
-            margin-right: -0.5em;
-            text-decoration: none;
-            line-height: 1.6em;
-            font-size: 1.5em;
-            transition:  transform 200ms ease-in-out;
+    .game-year {
+        font-size: 1.8rem;
+        color: $color-text-light;
+    }
 
-            &:hover {
-                transform: translateX(-0.5em);
+    .game-studio {
+        font-size: 1.8rem;
+        font-weight: normal;
+        text-transform: none;
+        color: $color-text-light;
+
+        a, a:visited {
+            color: $color-text-light;
+
+            &:hover, :active {
+                color: $color-text;
             }
         }
+    }
+
+    img {
+        margin: var(--gutter) 0;
     }
 }

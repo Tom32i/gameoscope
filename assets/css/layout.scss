@@ -69,7 +69,7 @@ a, a:visited {
     max-width: 1280px;
 }
 
-.content {
+.container {
     max-width: 1920px;
     display: flex;
     flex-direction: column;
@@ -84,5 +84,43 @@ a, a:visited {
 
     a {
         text-decoration: none;
+    }
+}
+
+.links {
+    display: flex;
+
+    a {
+        text-decoration: none;
+        padding: 0.4em;
+        display: block;
+        line-height: 1;
+
+        &:hover {
+            transform: scale3d(1.1, 1.1, 1);
+        }
+    }
+}
+
+.header-title-back {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    &:before {
+        padding-right: 1em;
+        margin-right: -0.5em;
+        text-decoration: none;
+        line-height: 1.5rem;
+        font-size: 1.2rem;
+        transition: transform 200ms ease-in-out;
+    }
+
+    &:hover:before {
+        transform: translateX(-0.5em);
     }
 }

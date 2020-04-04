@@ -3,14 +3,6 @@
 {% block title %}Game-o-scope{% endblock %}
 {% block body_class 'page-games' %}
 
-{% block header %}
-    <h1>Game-o-scope</h1>
-    <nav class="links">
-        <a href="https://instagram.com/gamoscope" class="icon-instagram" title="Instagram"></a>
-        <a href="https://twitter.com/tom32i" class="icon-twitter" title="Twitter"></a>
-    </nav>
-{% endblock %}
-
 {% block content %}
     {% for game in games %}
         {% set url = path('game', { game: game.slug }) %}

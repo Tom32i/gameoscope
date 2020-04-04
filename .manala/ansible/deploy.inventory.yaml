@@ -1,0 +1,48 @@
+all:
+    children:
+
+        production:
+            hosts:
+                01@production:
+                    # Ansible
+                    ansible_host: tom32i.fr
+            vars:
+                deploy_releases: 3
+                deploy_strategy: git
+                deploy_strategy_git_repo: git@git.deployer.vm:/home/git/release/gameoscope.git
+                deploy_strategy_git_version: production
+                deploy_dir: /home/tom32i/gameoscope
+                deploy_tasks:
+                  - shell: make warmup@production
+                deploy_post_tasks:
+                  - shell: sudo /bin/systemctl reload php7.4-fpm
+                deploy_shared_dirs:
+                  - var/log
+                  - var/sessions
+                  - var/games
+                  - var/cache/games
+                deploy_shared_files:
+                  - .env.local.php
+
+        staging:
+            hosts:
+                01@staging:
+                    # Ansible
+                    ansible_host: deployer.vm
+            vars:
+                deploy_releases: 3
+                deploy_strategy: git
+                deploy_strategy_git_repo: git@git.deployer.vm:/home/git/release/gameoscope.git
+                deploy_strategy_git_version: staging
+                deploy_dir: /home/tom32i/gameoscope
+                deploy_tasks:
+                  - shell: make warmup@staging
+                deploy_post_tasks:
+                  - shell: sudo /bin/systemctl reload php7.4-fpm
+                deploy_shared_dirs:
+                  - var/log
+                  - var/sessions
+                  - var/games
+                  - var/cache/games
+                deploy_shared_files:
+                  - .env.local.php
