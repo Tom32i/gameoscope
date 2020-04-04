@@ -55,7 +55,6 @@ releases:
       - composer.*
       - config
       - Makefile
-      - node_modules
       - public
       - src
       - templates

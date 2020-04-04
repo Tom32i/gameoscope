@@ -29,7 +29,7 @@
         "symfony/web-link": "5.0.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "5.0.*",
-        "tom32i/showcase-bundle": "^1.0@dev"
+        "tom32i/showcase-bundle": "^0.1.0"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
@@ -84,11 +84,5 @@
             "allow-contrib": false,
             "require": "5.0.*"
         }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:Tom32i/ShowcaseBundle.git"
-        }
-    ]
+    }
 }

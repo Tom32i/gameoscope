@@ -20,7 +20,6 @@ all:
                   - composer.*
                   - config
                   - Makefile
-                  - node_modules
                   - public
                   - src
                   - templates
@@ -46,7 +45,6 @@ all:
                   - composer.*
                   - config
                   - Makefile
-                  - node_modules
                   - public
                   - src
                   - templates
