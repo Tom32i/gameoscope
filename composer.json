@@ -28,7 +28,8 @@
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
         "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "5.0.*"
+        "symfony/yaml": "5.0.*",
+        "tom32i/showcase-bundle": "^1.0@dev"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
@@ -44,8 +45,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "Tom32i\\": "Tom32i/"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {
@@ -77,10 +77,18 @@
     "conflict": {
         "symfony/symfony": "*"
     },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
     "extra": {
         "symfony": {
             "allow-contrib": false,
             "require": "5.0.*"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:Tom32i/ShowcaseBundle.git"
+        }
+    ]
 }

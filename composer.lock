@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "41fcff08f9231ab5fe0df89a7d4ef6f0",
+    "content-hash": "ea0c618c56c053835fca917bf4434fd0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4823,6 +4823,54 @@
             "time": "2020-03-30T11:42:42+00:00"
         },
         {
+            "name": "tom32i/showcase-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Tom32i/ShowcaseBundle.git",
+                "reference": "f8e72d7ed5b39f9ad5701af99d76f7421d408d8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Tom32i/ShowcaseBundle/zipball/f8e72d7ed5b39f9ad5701af99d76f7421d408d8d",
+                "reference": "f8e72d7ed5b39f9ad5701af99d76f7421d408d8d",
+                "shasum": ""
+            },
+            "require": {
+                "league/glide": "^1.5",
+                "php": "^7.4.0",
+                "symfony/finder": "^5.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tom32i\\ShowcaseBundle\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Jarrand",
+                    "email": "thomas.jarrand@gmail.com",
+                    "homepage": "https://thomas.jarrand.fr"
+                }
+            ],
+            "description": "Showcase Bundle",
+            "homepage": "https://github.com/Tom32i/ShowcaseBundle",
+            "support": {
+                "source": "https://github.com/Tom32i/ShowcaseBundle/tree/master",
+                "issues": "https://github.com/Tom32i/ShowcaseBundle/issues"
+            },
+            "time": "2020-04-04T22:07:49+00:00"
+        },
+        {
             "name": "twig/extra-bundle",
             "version": "v3.0.3",
             "source": {
@@ -5738,9 +5786,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "tom32i/showcase-bundle": 20
+    },
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.4.0",

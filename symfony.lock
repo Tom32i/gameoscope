@@ -460,6 +460,9 @@
     "symfony/yaml": {
         "version": "v5.0.7"
     },
+    "tom32i/showcase-bundle": {
+        "version": "1.x-dev"
+    },
     "twig/extra-bundle": {
         "version": "v3.0.3"
     },

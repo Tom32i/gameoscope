@@ -116,26 +116,26 @@ lint-yaml:
 # Upload #
 ##########
 
-## Upload photos (demo)
-upload@demo:
+## Upload photos (staging)
+upload@staging:
 	chmod -R 755 var/games
-	rsync -arzv --progress var/games/* tom32i@deployer.vm:/home/tom32i/gamoscope/shared/var/games #--delete
+	rsync -arzv --progress var/games/* tom32i@deployer.vm:/home/tom32i/gameoscope/shared/var/games #--delete
 	#vendor/bin/dep thumbnail:generate deployer.vm
 
-## Upload photos (prod)
-upload@prod:
+## Upload photos (production)
+upload@production:
 	chmod -R 755 var/games
-	rsync -arzv --progress var/games/* tom32i@tom32i.fr:/home/tom32i/gamoscope/shared/var/games #--delete
+	rsync -arzv --progress var/games/* tom32i@tom32i.fr:/home/tom32i/gameoscope/shared/var/games #--delete
 	#vendor/bin/dep thumbnail:generate tom32i.fr
 
-## Download photos (demo)
-download@demo:
-	rsync -arzv --progress tom32i@deployer.vm:/home/tom32i/gamoscope/shared/var/games/* var/games
+## Download photos (staging)
+download@staging:
+	rsync -arzv --progress tom32i@deployer.vm:/home/tom32i/gameoscope/shared/var/games/* var/games
 	#vendor/bin/dep thumbnail:generate deployer.vm
 
-## Download photos (prod)
-download@prod:
-	rsync -arzv --progress tom32i@tom32i.fr:/home/tom32i/gamoscope/shared/var/games/* var/games
+## Download photos (production)
+download@production:
+	rsync -arzv --progress tom32i@tom32i.fr:/home/tom32i/gameoscope/shared/var/games/* var/games
 	#vendor/bin/dep thumbnail:generate tom32i.fr
 
 ##########
