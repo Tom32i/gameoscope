@@ -10,7 +10,7 @@
         {% set preview = game.images|first %}
         {% set size = dimensions('thumbnail') %}
         <a class="game" href="{{ url }}">
-            <h2 class="title">{{ game.name }}</h2>
+            <h2 class="title">{{ game.name|default(game.slug) }}</h2>
             <img class="preview" title="{{ preview.slug }}" src="{{ image(preview.path, 'thumbnail') }}" width="{{ size.width }}" height="{{ size.height }}" />
         </a>
     {% endfor %}
