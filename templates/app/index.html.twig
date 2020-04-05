@@ -5,13 +5,15 @@
 
 {% block content %}
     {% for game in games %}
-        {% set url = path('game', { game: game.slug }) %}
+        {% if not game.draft|default(false) %}
+            {% set url = path('game', { game: game.slug }) %}
 
-        {% set preview = game.images|first %}
-        {% set size = dimensions('thumbnail') %}
-        <a class="game" href="{{ url }}">
-            <h2 class="title">{{ game.name|default(game.slug) }}</h2>
-            <img class="preview" title="{{ preview.slug }}" src="{{ image(preview.path, 'thumbnail') }}" width="{{ size.width }}" height="{{ size.height }}" />
-        </a>
+            {% set preview = game.images|first %}
+            {% set size = dimensions('thumbnail') %}
+            <a class="game" href="{{ url }}">
+                <h2 class="title">{{ game.name|default(game.slug) }}</h2>
+                <img class="preview" title="{{ preview.slug }}" src="{{ image(preview.path, 'thumbnail') }}" width="{{ size.width }}" height="{{ size.height }}" />
+            </a>
+        {% endif %}
     {% endfor %}
 {% endblock %}
