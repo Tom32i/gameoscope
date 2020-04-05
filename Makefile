@@ -141,3 +141,6 @@ download@production:
 ##########
 # Custom #
 ##########
+
+game:
+	bin/console app:game

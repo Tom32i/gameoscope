@@ -67,6 +67,7 @@ class GameCommand extends Command
 
         $io->note('Création du fichier de configuration ...');
         $this->createConfigFile($path, [
+            'draft' => true,
             'name' => $name,
             'date' => $date,
             'year' => $year,
