@@ -13,6 +13,8 @@ install:
 	composer install --verbose
 	# Npm install
 	npm install
+	# Create screenshot repository
+	make var/games
 
 install@staging: export APP_ENV = prod
 install@staging:
@@ -27,6 +29,10 @@ install@production:
 	composer install --verbose --no-progress --no-interaction --prefer-dist --optimize-autoloader --no-scripts --no-dev
 	# Npm
 	npm install
+
+# Create screenshot repository
+var/games:
+	cd var && git clone git@tom32i.fr:/home/git/gameoscope-screenshot.git games
 
 ##########
 # Warmup #
