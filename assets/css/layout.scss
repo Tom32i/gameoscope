@@ -13,6 +13,7 @@ body {
     color: $color-text;
     padding: 0 2em;
     perspective: 100vh;
+    font-family: Georgia, serif;
 }
 
 h1, h2, h3, h4, h5 {
@@ -59,24 +60,30 @@ a, a:visited {
     }
 }
 
-.header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 2em 0 1em;
+.container {
     width: 100%;
     max-width: 1280px;
-}
-
-.container {
-    max-width: 1920px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.container-large {
+    width: 100%;
+    max-width: 1920px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2em 0 1em;
+}
+
 .footer {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -24,9 +24,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-download {
+  &:before {
+    content: $icon-download;
+  }
+}
 .icon-back {
   &:before {
     content: $icon-back;
+  }
+}
+.icon-info {
+  &:before {
+    content: $icon-info;
   }
 }
 .icon-instagram {
@@ -39,3 +49,4 @@
     content: $icon-twitter;
   }
 }
+

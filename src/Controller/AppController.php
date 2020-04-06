@@ -24,6 +24,14 @@ class AppController extends AbstractController
     }
 
     /**
+     * @Route("/a-propos", name="about")
+     */
+    public function about()
+    {
+        return $this->render('app/about.html.twig');
+    }
+
+    /**
      * @Route("/{game}", name="game")
      */
     public function game(string $game)

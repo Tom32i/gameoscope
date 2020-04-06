@@ -1,9 +1,9 @@
 @media (max-width: 2000px) {
-    .content { max-width: 1280px; }
+    .container, .container-large { max-width: 1280px; }
 }
 
 @media (max-width: 1360px) {
-    .content {  max-width: 960px; }
+    .container, .container-large {  max-width: 960px; }
 }
 
 @media (max-width: 1040px) {
@@ -11,12 +11,13 @@
       --gutter: 2em;
     }
 
-    .container {  max-width: 960px; }
+    .container, .container-large  { max-width: 960px; }
+
+    .links {
+        font-size: 1.5em;
+    }
 
     .page-games {
-        .links {
-            font-size: 1.5em;
-        }
 
         .game {
             .title {
