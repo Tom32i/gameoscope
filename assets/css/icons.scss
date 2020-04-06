@@ -9,7 +9,8 @@
   font-display: block;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="icon-"]:before, [class*=" icon-"]:before,
+[class^="icon-right"]:after, [class*=" icon-right"]:after {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: '#{$icomoon-font-family}' !important;
   speak: none;
@@ -18,35 +19,35 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+  display: inline-block;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-download {
-  &:before {
-    content: $icon-download;
-  }
+.icon-download:before,
+.icon-right-download:after {
+  content: $icon-download;
 }
-.icon-back {
-  &:before {
-    content: $icon-back;
-  }
+.icon-info:before,
+.icon-right-info:after {
+  content: $icon-info;
 }
-.icon-info {
-  &:before {
-    content: $icon-info;
-  }
+.icon-instagram:before,
+.icon-right-instagram:after {
+  content: $icon-instagram;
 }
-.icon-instagram {
-  &:before {
-    content: $icon-instagram;
-  }
+.icon-twitter:before,
+.icon-right-twitter:after {
+  content: $icon-twitter;
 }
-.icon-twitter {
-  &:before {
-    content: $icon-twitter;
-  }
+.icon-next:before,
+.icon-right-next:after {
+  content: $icon-next;
+}
+.icon-previous:before,
+.icon-right-previous:after {
+  content: $icon-previous;
 }
 

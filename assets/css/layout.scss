@@ -41,21 +41,29 @@ a, a:visited {
     font-family: 'Kanit', sans-serif;
     font-weight: normal;
     color: $color-text;
+    text-decoration: none;
+
+    &[target] {
+        text-decoration: underline;
+    }
 
     &:active, &:hover {
         color: $color-text-dark;
+        text-decoration: underline;
     }
 
     &.with-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
+        &:active, &:hover {
+            &:before, &:after {
+                text-decoration: none;
+            }
+        }
 
         &:before {
             margin-right: 0.4em;
-            position: absolute;
-            right: 100%;
+        }
+        &:after {
+            margin-left: 0.4em;
         }
     }
 }
@@ -82,6 +90,20 @@ a, a:visited {
     margin: 2em 0 1em;
 }
 
+.bottom-nav {
+    display: flex;
+
+    > a {
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 .footer {
     width: 100%;
     display: flex;
@@ -89,8 +111,12 @@ a, a:visited {
     justify-content: center;
     margin: var(--gutter) 0;
 
-    a {
-        text-decoration: none;
+    .links {
+        display: flex;
+
+        a {
+            margin: 0 1em;
+        }
     }
 }
 
@@ -98,12 +124,12 @@ a, a:visited {
     display: flex;
 
     a {
-        text-decoration: none;
         padding: 0.4em;
         display: block;
         line-height: 1;
+        transition: transform 100ms linear;
 
-        &:hover {
+        &.icon-only:hover {
             transform: scale3d(1.1, 1.1, 1);
         }
     }
@@ -129,5 +155,9 @@ a, a:visited {
 
     &:hover:before {
         transform: translateX(-0.5em);
+    }
+
+    &:hover {
+        text-decoration: none;
     }
 }

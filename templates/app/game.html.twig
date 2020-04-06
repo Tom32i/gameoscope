@@ -2,29 +2,20 @@
 
 {% block title %}{{ game.name }} sur Game-o-scope{% endblock %}
 {% block body_class 'page-game' %}
+{% block content_container_class 'container-large' %}
 
 {% block header_title %}
-    <a href="{{ path('games') }}" class="header-title-back icon-back">
+    <a href="{{ path('games') }}" class="header-title-back icon-previous">
         {{ parent() }}
     </a>
 {% endblock %}
 
 {% block sub_header %}
     <div class="game-info">
-        <h2 class="game-title">
-            <span>{{ game.name }}</span>
-            <span class="game-year">{{ game.year|default(null) }}</span>
-        </h2>
-        {% if game.studio %}
-            <h3 class="game-studio">
-                par
-                {% if game.studio.url %}
-                    <a href="{{ game.studio.url }}">{{ game.studio.name }}</a>
-                {% else %}
-                    {{ game.studio.name|default(game.studio) }}
-                {% endif %}
-            </h3>
-        {% endif %}
+        <h2 class="game-title">{{ game.name }}</h2>
+        <h3 class="game-studio">
+            par {{ block('studio') }}, <span class="game-year">{{ game.year }}</span>
+        </h3>
     </div>
 {% endblock %}
 
@@ -33,12 +24,17 @@
     {% for image in game.images %}
         <img class="preview" title="{{ image.slug }}" src="{{ image(image.path, 'full') }}" width="{{ size.width }}" height="{{ size.height }}" />
     {% endfor %}
+    <nav class="bottom-nav">
+        <a href="{{ path('game', { game: previous.slug }) }}" class="with-icon icon-previous"></a>
+        <a href="{{ path('games') }}">Retour aux jeux</a>
+        <a href="{{ path('game', { game: next.slug }) }}" class="with-icon icon-right-next"></a>
+    </nav>
 {% endblock %}
 
-{% block footer %}
-    <footer class="footer">
-        <a href="{{ path('games') }}" class="with-icon icon-back">
-            Retour aux jeux
-        </a>
-    </footer>
+{% block studio %}
+{%- if game.studio.url -%}
+    <a href="{{ game.studio.url }}" target="_blank">{{ game.studio.name }}</a>
+{%- else -%}
+    {{ game.studio.name|default(game.studio) }}
+{%- endif -%}
 {% endblock %}

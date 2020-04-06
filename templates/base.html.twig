@@ -28,19 +28,27 @@
                                 <h1>Game-o-scope</h1>
                             {% endblock %}
                             <nav class="links">
-                                <a href="{{ path('about') }}" class="icon-info" title="À propos"></a>
-                                <a href="https://instagram.com/gamoscope" class="icon-instagram" title="Instagram"></a>
-                                <a href="https://twitter.com/tom32i" class="icon-twitter" title="Twitter"></a>
+                                <a href="{{ path('about') }}" class="icon-only icon-info" title="À propos"></a>
+                                <a href="https://instagram.com/gamoscope" class="icon-only icon-instagram" title="Instagram"></a>
+                                <a href="https://twitter.com/tom32i" class="icon-only icon-twitter" title="Twitter"></a>
                             </nav>
                     {% endblock %}
                 </header>
                 {% block sub_header %}{% endblock %}
             </div>
-            <main class="content container-large">
+            <main class="content {% block content_container_class 'container' %}">
                 {% block content %}{% endblock %}
             </main>
             <div class="container">
-                {% block footer %}{% endblock %}
+                {% block footer %}
+                    <footer class="footer">
+                        <nav class="links">
+                            <a href="{{ path('about') }}">À propos</a>
+                            <a href="https://instagram.com/gamoscope" class="icon-instagram with-icon" title="Instagram">Instagram</a>
+                            <a href="https://twitter.com/tom32i" class="icon-twitter with-icon" title="Twitter">Twitter</a>
+                        </nav>
+                    </footer>
+                {% endblock %}
             </div>
         {% endblock %}
         {% block javascripts %}
