@@ -154,22 +154,26 @@ cache-generate:
 	curl localhost:8000
 
 cache-generate@staging:
-	ssh deployer.vm bin/console showcase:cache-generate full
+	ssh deployer.vm 'cd gameoscope/current && bin/console showcase:cache-generate full'
 	curl gameoscope.deployer.vm
 
 cache-generate@production:
-	ssh tom32i.fr bin/console showcase:cache-generate full
+	ssh tom32i.fr 'cd gameoscope/current && bin/console showcase:cache-generate full'
 	curl gameoscope.fr
 
 cache-clear:
 	bin/console showcase:cache-clear
 
 cache-clear@staging:
-	ssh deployer.vm bin/console showcase:cache-clear
+	ssh deployer.vm 'cd gameoscope/current && bin/console showcase:cache-clear'
 
 cache-clear@production:
-	ssh tom32i.fr bin/console showcase:cache-clear
+	ssh tom32i.fr 'cd gameoscope/current && bin/console showcase:cache-clear'
 
 cache-regenerate: cache-clear cache-generate
 cache-regenerate@staging: cache-clear@staging cache-generate@staging
 cache-regenerate@production: cache-clear@production cache-generate@production
+
+link-showcase:
+	rm -rf ./vendor/tom32i/showcase-bundle
+	ln -s ~/Sites/opensource/ShowcaseBundle ./vendor/tom32i/showcase-bundle
