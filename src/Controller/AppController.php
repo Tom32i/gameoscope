@@ -44,8 +44,8 @@ class AppController extends AbstractController
 
         $games = $this->browser->list(['[date]' => false], ['[slug]' => true]);
         $index = array_search($game, $games);
-        $next = isset($games[$index + 1]) ? $games[$index + 1] : $games[count($games) - 1];
-        $previous = isset($games[$index - 1]) ? $games[$index - 1] : $games[0];
+        $next = isset($games[$index + 1]) ? $games[$index + 1] : $games[0];
+        $previous = isset($games[$index - 1]) ? $games[$index - 1] : $games[count($games) - 1];
 
         return $this->render('app/game.html.twig', [
             'game' => $game,
