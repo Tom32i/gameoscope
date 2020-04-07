@@ -126,23 +126,21 @@ lint-yaml:
 upload@staging:
 	chmod -R 755 var/games
 	rsync -arzv --progress --exclude '.*' var/games/* tom32i@deployer.vm:/home/tom32i/gameoscope/shared/var/games --delete
-	#vendor/bin/dep thumbnail:generate deployer.vm
+	make cache-generate@production
 
 ## Upload photos (production)
 upload@production:
 	chmod -R 755 var/games
 	rsync -arzv --progress --exclude '.*' var/games/* tom32i@tom32i.fr:/home/tom32i/gameoscope/shared/var/games --delete
-	#vendor/bin/dep thumbnail:generate tom32i.fr
+	make cache-generate@production
 
 ## Download photos (staging)
 download@staging:
 	rsync -arzv --progress --exclude '.*' tom32i@deployer.vm:/home/tom32i/gameoscope/shared/var/games/* var/games
-	#vendor/bin/dep thumbnail:generate deployer.vm
 
 ## Download photos (production)
 download@production:
 	rsync -arzv --progress --exclude '.*' tom32i@tom32i.fr:/home/tom32i/gameoscope/shared/var/games/* var/games
-	#vendor/bin/dep thumbnail:generate tom32i.fr
 
 ##########
 # Custom #
@@ -150,3 +148,28 @@ download@production:
 
 game:
 	bin/console app:game
+
+cache-generate:
+	bin/console showcase:cache-generate full
+	curl localhost:8000
+
+cache-generate@staging:
+	ssh deployer.vm bin/console showcase:cache-generate full
+	curl gameoscope.deployer.vm
+
+cache-generate@production:
+	ssh tom32i.fr bin/console showcase:cache-generate full
+	curl gameoscope.fr
+
+cache-clear:
+	bin/console showcase:cache-clear
+
+cache-clear@staging:
+	ssh deployer.vm bin/console showcase:cache-clear
+
+cache-clear@production:
+	ssh tom32i.fr bin/console showcase:cache-clear
+
+cache-regenerate: cache-clear cache-generate
+cache-regenerate@staging: cache-clear@staging cache-generate@staging
+cache-regenerate@production: cache-clear@production cache-generate@production
