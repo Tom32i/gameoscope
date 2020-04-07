@@ -174,6 +174,9 @@ cache-regenerate: cache-clear cache-generate
 cache-regenerate@staging: cache-clear@staging cache-generate@staging
 cache-regenerate@production: cache-clear@production cache-generate@production
 
+normalize:
+	bin/console showcase:normalize-names
+
 link-showcase:
 	rm -rf ./vendor/tom32i/showcase-bundle
 	ln -s ~/Sites/opensource/ShowcaseBundle ./vendor/tom32i/showcase-bundle
