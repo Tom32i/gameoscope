@@ -22,7 +22,9 @@
 {% block content %}
     {% set size = dimensions('full') %}
     {% for image in game.images %}
-        <img class="preview" title="{{ image.slug }}" src="{{ image(image.path, 'full') }}" width="{{ size.width }}" height="{{ size.height }}" />
+        <a class="screenshot" href="{{ download(image.path) }}" download>
+            <img title="{{ image.slug }}" src="{{ image(image.path, 'full') }}" width="{{ size.width }}" height="{{ size.height }}" />
+        </a>
     {% endfor %}
     <nav class="bottom-nav">
         <a href="{{ path('game', { game: previous.slug }) }}" class="with-icon icon-previous"></a>

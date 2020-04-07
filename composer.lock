@@ -4828,12 +4828,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Tom32i/ShowcaseBundle.git",
-                "reference": "0c0727d0a31e1da0cedb8842700144df1e4ea718"
+                "reference": "8ee628311d5cc0e09c1a982f8afd075dc4bd546e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Tom32i/ShowcaseBundle/zipball/0c0727d0a31e1da0cedb8842700144df1e4ea718",
-                "reference": "0c0727d0a31e1da0cedb8842700144df1e4ea718",
+                "url": "https://api.github.com/repos/Tom32i/ShowcaseBundle/zipball/8ee628311d5cc0e09c1a982f8afd075dc4bd546e",
+                "reference": "8ee628311d5cc0e09c1a982f8afd075dc4bd546e",
                 "shasum": ""
             },
             "require": {
@@ -4865,7 +4865,7 @@
             ],
             "description": "Showcase Bundle",
             "homepage": "https://github.com/Tom32i/ShowcaseBundle",
-            "time": "2020-04-05T10:44:43+00:00"
+            "time": "2020-04-07T17:56:27+00:00"
         },
         {
             "name": "twig/extra-bundle",
