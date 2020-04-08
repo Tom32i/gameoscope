@@ -159,7 +159,7 @@ cache-generate@staging:
 
 cache-generate@production:
 	ssh tom32i.fr 'cd gameoscope/current && bin/console showcase:cache-generate full'
-	curl gameoscope.fr
+	curl https://gameoscope.fr
 
 cache-clear:
 	bin/console showcase:cache-clear
