@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,14 @@
         <meta name="title" content="{{ block('meta_title') }}">
         <meta name="description" content="{% block meta_description 'Collection de jolis environnements visuels capturés à la main dans mes jeux vidéo préférés.' %}">
         {% block social %}
+            <!-- Open Graph / Facebook -->
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="{{ app.request.uri }}">
+            <meta property="og:title" content="{{ block('meta_title') }}">
+            <meta property="og:description" content="{{ block('meta_description') }}">
+            <meta property="og:local" content="fr_FR">
+            <meta property="og:image" content="{% block meta_cover 'https://gameoscope.fr/cover.jpg' %}">
+
             <!-- Twitter -->
             <meta property="twitter:card" content="summary_large_image">
             <meta property="twitter:title" content="{{ block('meta_title') }}">
@@ -14,14 +22,6 @@
             <meta property="twitter:image" content="{{ block('meta_cover') }}">
             <meta property="twitter:site" content="@gameoscope">
             <meta property="twitter:creator" content="@tom32i">
-
-            <!-- Open Graph / Facebook -->
-            <meta property="og:type" content="website">
-            <meta property="og:url" content="{{ app.request.uri }}">
-            <meta property="og:title" content="{{ block('meta_title') }}">
-            <meta property="og:description" content="{{ block('meta_description') }}">
-            <meta property="og:local" content="fr_FR">
-            <meta property="og:image" content="{% block meta_cover 'https://gameoscope.fr/cover.png' %}">
         {% endblock %}
         {% block icon %}
             <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
