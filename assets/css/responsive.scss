@@ -10,19 +10,53 @@
     :root {
       --gutter: 2em;
     }
+}
 
-    .container, .container-large  { max-width: 960px; }
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.6em; }
+    h4 { font-size: 1.4em; }
+    h5 { font-size: 1.2em; }
 
     .links {
-        font-size: 1.5em;
+        font-size: 1.2em;
+    }
+
+    .footer .links a {
+        font-size: 0.8em;
+        margin: 0;
     }
 
     .page-games {
-
         .game {
             .title {
-                font-size: 4em;
+                font-size: 2.2em;
             }
+        }
+    }
+
+    .page-game {
+        .game-info {
+            margin: 1em 0 0 0;
+        }
+
+        .game-title {
+            font-size: 1.4em;
+        }
+
+        .game-studio {
+            font-size: 1.2em;
+        }
+    }
+
+    .about {
+        h2 {
+            font-size: 1.4em;
         }
     }
 }
