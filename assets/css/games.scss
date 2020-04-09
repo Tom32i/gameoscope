@@ -3,7 +3,7 @@
         display: block;
         position: relative;
         text-decoration: none;
-        margin: var(--gutter) 0;
+        margin: 3em 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -19,13 +19,12 @@
 
         .title {
             position: absolute;
-            line-height: 100%;
             width: 100%;
             color: white;
             font-size: 4em;
             padding: 1.2em;
             letter-spacing: 0.02em;
-            line-height: 0.7;
+            line-height: 0.8;
             margin: 0;
             text-align: center;
             transition: transform 200ms ease-in-out;

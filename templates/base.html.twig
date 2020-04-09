@@ -61,31 +61,32 @@
     <body class="{% block body_class '' %}">
         {% block body %}
             <div class="container">
-                <header class="header">
-                    {% block header %}
-                            {% block header_title %}
-                                <h1>Game-o-scope</h1>
-                            {% endblock %}
+                {% block header %}
+                    <header class="header">
+                        {% block header_title %}
+                            <h1>Game-o-scope</h1>
+                        {% endblock %}
+                        {% block header_links %}
                             <nav class="links">
                                 <a href="{{ path('about') }}" class="icon-only icon-info" title="À propos"></a>
                                 <a href="https://instagram.com/gameoscope" class="icon-only icon-instagram" title="Instagram"></a>
                                 <a href="https://twitter.com/gameoscope_fr" class="icon-only icon-twitter" title="Twitter"></a>
                             </nav>
-                    {% endblock %}
-                </header>
-                {% block sub_header %}{% endblock %}
-            </div>
-            <main class="content {% block content_container_class 'container' %}">
-                {% block content %}{% endblock %}
-            </main>
-            <div class="container">
+                        {% endblock %}
+                    </header>
+                {% endblock %}
+                <main class="content">
+                    {% block content %}{% endblock %}
+                </main>
                 {% block footer %}
                     <footer class="footer">
-                        <nav class="links">
-                            <a href="{{ path('about') }}">À propos</a>
-                            <a href="https://instagram.com/gamoscope" class="icon-instagram with-icon" title="Instagram">Instagram</a>
-                            <a href="https://twitter.com/tom32i" class="icon-twitter with-icon" title="Twitter">Twitter</a>
-                        </nav>
+                        {% block footer_content %}
+                            <nav class="links">
+                                <a href="{{ path('about') }}">À propos</a>
+                                <a href="https://instagram.com/gamoscope" class="icon-instagram with-icon" title="Instagram">Instagram</a>
+                                <a href="https://twitter.com/tom32i" class="icon-twitter with-icon" title="Twitter">Twitter</a>
+                            </nav>
+                        {% endblock %}
                     </footer>
                 {% endblock %}
             </div>

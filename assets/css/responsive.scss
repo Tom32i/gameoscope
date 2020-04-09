@@ -1,14 +1,25 @@
-@media (max-width: 2000px) {
-    .container, .container-large { max-width: 1280px; }
-}
-
 @media (max-width: 1440px) {
-    .container, .container-large {  max-width: 960px; }
-}
+    .container {  max-width: 960px; }
 
-@media (max-width: 1040px) {
-    :root {
-      --gutter: 2em;
+    body {
+        font-size: 20px;
+    }
+
+    .header {
+        margin: 2em 0 3em 0;
+    }
+
+    .page-games .game {
+        margin: 2em 0;
+
+        .title {
+            font-size: 4em;
+            padding: 1em;
+        }
+    }
+
+    .page-game .screenshot {
+        margin: 2em 0;
     }
 }
 
@@ -17,34 +28,33 @@
         font-size: 14px;
     }
 
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.8em; }
-    h3 { font-size: 1.6em; }
-    h4 { font-size: 1.4em; }
-    h5 { font-size: 1.2em; }
-
     .links {
         font-size: 1.2em;
     }
+}
 
-    .footer .links a {
-        font-size: 0.8em;
-        margin: 0;
+@media (max-width: 414px) {
+    body {
+        padding: 0 2em;
     }
 
-    .page-games {
-        .game {
-            .title {
-                font-size: 2.2em;
-            }
+    .page-games .game {
+        margin: 1em 0;
+
+        .title {
+            font-size: 2.2em;
         }
+    }
+
+    .page-game .screenshot {
+        margin: 1em 0;
+    }
+
+    .bottom-nav {
+        margin-top: 2em;
     }
 
     .page-game {
-        .game-info {
-            margin: 1em 0 0 0;
-        }
-
         .game-title {
             font-size: 1.4em;
         }
@@ -54,10 +64,26 @@
         }
     }
 
-    .about {
-        h2 {
-            font-size: 1.4em;
+    .footer {
+        margin: 4em 0;
+
+        .links a {
+            font-size: 0.8em;
+            margin: 0 0.5em;
         }
     }
 }
 
+
+@media (max-width: 320px) {
+    body {
+        font-size: 12px;
+    }
+
+    .page-games .game {
+        .title {
+            font-size: 2em;
+            padding: 0.8em;
+        }
+    }
+}

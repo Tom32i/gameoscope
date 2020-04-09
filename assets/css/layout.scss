@@ -1,17 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;900&display=swap');
 
-:root {
-  --gutter: 4em;
-}
-
 body {
-    font-size: 20px;
+    font-size: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: $background;
     color: $color-text;
-    padding: 0 2em;
+    padding: 0 4em;
     perspective: 100vh;
     font-family: Georgia, serif;
 }
@@ -25,11 +21,11 @@ h1, h2, h3, h4, h5 {
     line-height: 1;
 }
 
-h1 { font-size: 2.5em; }
-h2 { font-size: 2.25em; }
-h3 { font-size: 2em; }
-h4 { font-size: 1.75em; }
-h5 { font-size: 1.5em; }
+h1 { font-size: 2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.6em; }
+h4 { font-size: 1.4em; }
+h5 { font-size: 1.2em; }
 
 img {
     background-color: $color-text;
@@ -76,22 +72,35 @@ a, a:visited {
     align-items: center;
 }
 
-.container-large {
-    width: 100%;
-    max-width: 1920px;
-}
-
 .header {
     width: 100%;
+    margin: 3em 0 4em 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 2em 0 1em;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+
+    > * {
+        &:first-child {
+            margin-top: 0 !important;
+        }
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
 }
 
 .bottom-nav {
     display: flex;
+    width: 100%;
+    margin-top: 4em;
 
     > a {
         flex: 1;
@@ -109,7 +118,7 @@ a, a:visited {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: var(--gutter) 0;
+    margin: 6em 0;
 
     .links {
         display: flex;
