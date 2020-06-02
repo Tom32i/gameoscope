@@ -3,17 +3,17 @@
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Console\Question\Question;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
 class GameCommand extends Command
 {
     protected static $defaultName = 'app:game';
+
+    private string $path;
+    private AsciiSlugger $slugger;
 
     public function __construct(string $path)
     {
@@ -23,7 +23,7 @@ class GameCommand extends Command
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Create a new game');
     }
@@ -82,12 +82,12 @@ class GameCommand extends Command
         return 0;
     }
 
-    private function createPath(string $path)
+    private function createPath(string $path): void
     {
         mkdir($path);
     }
 
-    private function createConfigFile(string $path, array $info)
+    private function createConfigFile(string $path, array $info): void
     {
         file_put_contents(
             sprintf('%s/info.json', $path),

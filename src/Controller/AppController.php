@@ -4,11 +4,15 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Routing\Annotation\Route;
 use Tom32i\ShowcaseBundle\Service\Browser;
 
 class AppController extends AbstractController
 {
+    private Browser $browser;
+    private PropertyAccessor $propertyAccessor;
+
     public function __construct(Browser $browser)
     {
         $this->browser = $browser;
@@ -52,7 +56,7 @@ class AppController extends AbstractController
         $games = $this->listGames();
         $index = array_search($game, $games);
         $next = isset($games[$index + 1]) ? $games[$index + 1] : $games[0];
-        $previous = isset($games[$index - 1]) ? $games[$index - 1] : $games[count($games) - 1];
+        $previous = isset($games[$index - 1]) ? $games[$index - 1] : $games[\count($games) - 1];
 
         return $this->render('app/game.html.twig', [
             'game' => $game,

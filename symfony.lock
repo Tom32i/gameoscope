@@ -1,4 +1,10 @@
 {
+    "composer/semver": {
+        "version": "1.5.1"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.1"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -16,6 +22,18 @@
     },
     "doctrine/lexer": {
         "version": "1.2.0"
+    },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cc05ab6abf6894bddb9bbd6a252459010ebe040b"
+        },
+        "files": [
+            ".php_cs.dist"
+        ]
     },
     "guzzlehttp/psr7": {
         "version": "1.6.1"
@@ -41,6 +59,9 @@
     "php": {
         "version": "7.4"
     },
+    "php-cs-fixer/diff": {
+        "version": "v1.3.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"
     },
@@ -49,6 +70,9 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.1.0"
+    },
+    "phpstan/phpstan": {
+        "version": "0.12.25"
     },
     "psr/cache": {
         "version": "1.0.1"

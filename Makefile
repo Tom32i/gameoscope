@@ -110,7 +110,7 @@ lint-phpcsfixer:
 	vendor/bin/php-cs-fixer fix --dry-run --diff
 
 lint-phpstan:
-	vendor/bin/phpstan analyse
+	vendor/bin/phpstan analyse src
 
 lint-twig:
 	bin/console lint:twig templates
