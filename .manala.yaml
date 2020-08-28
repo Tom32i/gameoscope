@@ -43,7 +43,7 @@ releases:
   - &release
     #app: api
     mode: production
-    repo: git@tom32i.fr:/home/git/release/gameoscope.git
+    repo: git@tom32i.fr:release/gameoscope.git
     # Release
     release_tasks:
       - shell: make install@production

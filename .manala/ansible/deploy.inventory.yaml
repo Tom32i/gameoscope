@@ -9,20 +9,20 @@ all:
             vars:
                 deploy_releases: 3
                 deploy_strategy: git
-                deploy_strategy_git_repo: git@tom32i.fr:/home/git/release/gameoscope.git
-                deploy_strategy_git_version: production
+                deploy_strategy_git_repo: git@tom32i.fr:release/gameoscope.git
+                deploy_strategy_git_ref: production
                 deploy_dir: /home/tom32i/gameoscope
                 deploy_tasks:
                   - shell: make warmup@production
                 deploy_post_tasks:
                   - shell: sudo /bin/systemctl reload php7.4-fpm
                 deploy_shared_dirs:
-                  - var/log
-                  - var/sessions
-                  - var/games
-                  - var/cache/games
+                    - var/log
+                    - var/sessions
+                    - var/games
+                    - var/cache/games
                 deploy_shared_files:
-                  - .env.local.php
+                    - .env.local.php
 
         staging:
             hosts:
@@ -32,17 +32,17 @@ all:
             vars:
                 deploy_releases: 3
                 deploy_strategy: git
-                deploy_strategy_git_repo: git@tom32i.fr:/home/git/release/gameoscope.git
-                deploy_strategy_git_version: staging
+                deploy_strategy_git_repo: git@tom32i.fr:release/gameoscope.git
+                deploy_strategy_git_ref: staging
                 deploy_dir: /home/tom32i/gameoscope
                 deploy_tasks:
                   - shell: make warmup@staging
                 deploy_post_tasks:
                   - shell: sudo /bin/systemctl reload php7.4-fpm
                 deploy_shared_dirs:
-                  - var/log
-                  - var/sessions
-                  - var/games
-                  - var/cache/games
+                    - var/log
+                    - var/sessions
+                    - var/games
+                    - var/cache/games
                 deploy_shared_files:
-                  - .env.local.php
+                    - .env.local.php
