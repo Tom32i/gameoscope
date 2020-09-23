@@ -46,7 +46,7 @@ class AppController extends AbstractController
         $game = $this->browser->read($game, ['[slug]' => true]);
 
         if (!$game || $this->propertyAccessor->getValue($game, '[draft]')) {
-            throw $this->createNotFoundException('Event not found');
+            throw $this->createNotFoundException('Game not found');
         }
 
         $games = $this->listGames();

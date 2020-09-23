@@ -12,4 +12,5 @@ return [
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Tom32i\ShowcaseBundle\Tom32iShowcaseBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+    Content\ContentBundle::class => ['all' => true],
 ];

@@ -51,13 +51,12 @@ warmup@production: export APP_ENV = prod
 warmup@production:
 	# Generate thumbnails
 
-
 #######
 # Run #
 #######
 
 ## Run application
-run:
+start:
 	symfony server:start
 
 #########
@@ -68,22 +67,29 @@ run:
 watch:
 	./node_modules/.bin/encore dev --watch
 
-build:
-	./node_modules/.bin/encore production
-
+build: build-assets build-content
 build@staging: build
 build@production: build
+
+build-assets:
+	./node_modules/.bin/encore production
+
+## Build static site
+build-content: export APP_ENV = prod
+build-content:
+	bin/console cache:clear
+	bin/console content:build
 
 thumbnail:
 	bin/console thumbnail:generate
 
-thumbnail@production: export SYMFONY_ENV = prod
+thumbnail@production: export APP_ENV = prod
 thumbnail@production: thumbnail
 
 clear-thumbnail:
 	bin/console thumbnail:clear
 
-clear-thumbnail@production: export SYMFONY_ENV = prod
+clear-thumbnail@production: export APP_ENV = prod
 clear-thumbnail@production: clear-thumbnail
 
 ############
@@ -94,7 +100,7 @@ clear-thumbnail@production: clear-thumbnail
 security:
 	security-checker security:check
 
-security@test: export SYMFONY_ENV = test
+security@test: export APP_ENV = test
 security@test: security
 
 ########
