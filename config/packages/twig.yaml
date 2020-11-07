@@ -1,4 +1,4 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
-      analytics_id: ~
+      google_analytics_token: "%env(GOOGLE_ANALYTICS_TOKEN)%"
