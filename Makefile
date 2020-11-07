@@ -57,7 +57,7 @@ warmup@production:
 #######
 
 ## Run application
-run:
+start:
 	symfony server:start
 
 #########
