@@ -23,6 +23,9 @@
     "doctrine/lexer": {
         "version": "1.2.0"
     },
+    "ekino/phpstan-banned-code": {
+        "version": "v0.3.1"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -76,6 +79,9 @@
     },
     "phpstan/phpstan": {
         "version": "0.12.25"
+    },
+    "phpstan/phpstan-symfony": {
+        "version": "0.12.11"
     },
     "psr/cache": {
         "version": "1.0.1"
