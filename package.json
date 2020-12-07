@@ -1,11 +1,11 @@
 {
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.31.0",
+        "@symfony/webpack-encore": "^0.33.0",
         "autoprefixer": "^9.7.5",
         "core-js": "^3.0.0",
-        "node-sass": "^4.13.1",
+        "node-sass": "^5.0.0",
         "postcss-loader": "^3.0.0",
-        "sass-loader": "^9.0.1",
+        "sass-loader": "^10.0.0",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",

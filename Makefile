@@ -7,14 +7,15 @@
 # Install #
 ###########
 
+## Setup project
+setup: install build var/games
+
 ## Install application
 install:
 	# Composer
 	composer install --verbose
 	# Npm install
 	npm install
-	# Create screenshot repository
-	make var/games
 
 install@staging: export APP_ENV = prod
 install@staging:
@@ -58,7 +59,7 @@ warmup@production:
 
 ## Run application
 start:
-	symfony server:start
+	symfony server:start --no-tls
 
 #########
 # Build #

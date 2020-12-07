@@ -4,6 +4,9 @@ Place screenshots in:
 
 `var/games`
 
+## Setup
+
+    make install
 
 ## Upload
 

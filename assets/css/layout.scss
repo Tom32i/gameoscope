@@ -5,11 +5,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $background;
+    background: linear-gradient(125deg, $background, darken($background, 10%));
+    background-attachment: fixed;
     color: $color-text;
     padding: 0 4em;
+    min-height: 100vh;
     perspective: 100vh;
     font-family: Georgia, serif;
+    text-shadow: 0 0.1em 0.2em black;
+
+    &::after {
+        content: "";
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background: url('../img/noise.png');
+        opacity: 0.8;
+        z-index: -1;
+    }
 }
 
 h1, h2, h3, h4, h5 {

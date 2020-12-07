@@ -1,8 +1,8 @@
-$background: #eeeeee;
+$background: #1e2329;
 
-$color-text-dark: #393e46;
-$color-text: lighten($color-text-dark, 20%);
-$color-text-light: lighten($color-text, 20%);
+$color-text-dark: #fff;
+$color-text: darken($color-text-dark, 15%);
+$color-text-light: darken($color-text, 30%);
 
 // Icons
 $icomoon-font-family: "icons" !default;

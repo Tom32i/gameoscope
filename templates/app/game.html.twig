@@ -15,7 +15,7 @@
     <div class="game-info">
         <h2 class="game-title">{{ game.name }}</h2>
         <h3 class="game-studio">
-            par {{ block('studio') }}, <span class="game-year">{{ game.year }}</span>
+            {{ block('studio') }} | <span class="game-year">{{ game.year }}</span>
         </h3>
     </div>
 {% endblock %}

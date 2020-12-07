@@ -22,7 +22,7 @@
     }
 
     .game-studio {
-        font-size: 1.4em;
+        font-size: 1em;
         line-height: 1em;
         font-weight: normal;
         text-transform: none;
@@ -30,6 +30,7 @@
 
         a, a:visited {
             color: $color-text-light;
+            text-decoration: none;
 
             &:hover, :active {
                 color: $color-text;
@@ -42,6 +43,7 @@
         position: relative;
         line-height: 0;
         margin: 3em 0;
+        box-shadow: 0 1em 3em rgba(black, 0.66);
 
         &:before {
             font-size: 10em;
