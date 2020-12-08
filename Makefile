@@ -102,7 +102,7 @@ security@test: security
 # Lint #
 ########
 
-lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml
+lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint
 
 fix-phpcsfixer:
 	vendor/bin/php-cs-fixer fix
@@ -118,6 +118,9 @@ lint-twig:
 
 lint-yaml:
 	bin/console lint:yaml translations config
+
+lint-eslint:
+	npx eslint assets/js --ext .js,.json --fix
 
 ##########
 # Upload #

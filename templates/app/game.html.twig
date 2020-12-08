@@ -22,18 +22,18 @@
 
 {% block content %}
     {% set size = dimensions('full') %}
-    {% for image in game.images %}
+    {% for index, image in game.images %}
         <a class="screenshot" href="{{ download(image.path) }}" download>
-            <img title="{{ image.slug }}" src="{{ image(image.path, 'full') }}" width="{{ size.width }}" height="{{ size.height }}" loading="lazy" />
+            <img id="screenshot-{{ index }}" title="{{ image.slug }}" src="{{ image(image.path, 'full') }}" width="{{ size.width }}" height="{{ size.height }}" loading="lazy" />
         </a>
     {% endfor %}
 {% endblock %}
 
 {% block footer %}
     <nav class="bottom-nav">
-        <a href="{{ path('game', { game: previous.slug }) }}" class="with-icon icon-previous"></a>
+        <a id="game-previous" href="{{ path('game', { game: previous.slug }) }}" class="with-icon icon-previous"></a>
         <a href="{{ path('games') }}">Retour aux jeux</a>
-        <a href="{{ path('game', { game: next.slug }) }}" class="with-icon icon-right-next"></a>
+        <a id="game-next" href="{{ path('game', { game: next.slug }) }}" class="with-icon icon-right-next"></a>
     </nav>
 
     {{ parent() }}

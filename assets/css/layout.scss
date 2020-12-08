@@ -5,14 +5,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(125deg, $background, darken($background, 10%));
+    background: linear-gradient(125deg, lighten($background, 5%), darken($background, 5%));
     background-attachment: fixed;
     color: $color-text;
     padding: 0 4em;
     min-height: 100vh;
     perspective: 100vh;
     font-family: Georgia, serif;
-    text-shadow: 0 0.1em 0.2em black;
+    text-shadow: 0 0.05em 0.2em rbga(black, 0.8);
 
     &::after {
         content: "";

@@ -10,7 +10,7 @@
     }
 
     .page-games .game {
-        margin: 3em 0;
+        margin: 2em 0;
 
         .title {
             font-size: 4em;
@@ -20,6 +20,10 @@
 
     .page-game .screenshot {
         margin: 2em 0;
+
+        img {
+            scroll-margin-top: 2em;
+        }
     }
 }
 
@@ -48,6 +52,10 @@
 
     .page-game .screenshot {
         margin: 1em 0;
+
+        img {
+            scroll-margin-top: 1em;
+        }
     }
 
     .bottom-nav {
