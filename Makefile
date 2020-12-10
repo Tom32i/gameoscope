@@ -7,14 +7,15 @@
 # Install #
 ###########
 
+## Setup project
+setup: install build var/games
+
 ## Install application
 install:
 	# Composer
 	composer install --verbose
 	# Npm install
 	npm install
-	# Create screenshot repository
-	make var/games
 
 install@staging: export APP_ENV = prod
 install@staging:
@@ -58,7 +59,7 @@ warmup@production:
 
 ## Run application
 start:
-	symfony server:start
+	symfony server:start --no-tls
 
 #########
 # Build #
@@ -101,7 +102,7 @@ security@test: security
 # Lint #
 ########
 
-lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml
+lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint
 
 fix-phpcsfixer:
 	vendor/bin/php-cs-fixer fix
@@ -117,6 +118,9 @@ lint-twig:
 
 lint-yaml:
 	bin/console lint:yaml translations config
+
+lint-eslint:
+	npx eslint assets/js --ext .js,.json --fix
 
 ##########
 # Upload #

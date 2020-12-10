@@ -5,11 +5,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $background;
+    background: url('../img/noise.png'), linear-gradient(125deg, lighten($background, 5%), darken($background, 5%));
+    background-attachment: scroll, fixed;
     color: $color-text;
     padding: 0 4em;
+    min-height: 100vh;
     perspective: 100vh;
     font-family: Georgia, serif;
+    text-shadow: 0 0.05em 0.2em rbga(black, 0.8);
 }
 
 h1, h2, h3, h4, h5 {
