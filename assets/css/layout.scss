@@ -5,23 +5,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(125deg, lighten($background, 5%), darken($background, 5%));
-    background-attachment: fixed;
+    background: url('../img/noise.png'), linear-gradient(125deg, lighten($background, 5%), darken($background, 5%));
+    background-attachment: scroll, fixed;
     color: $color-text;
     padding: 0 4em;
     min-height: 100vh;
     perspective: 100vh;
     font-family: Georgia, serif;
     text-shadow: 0 0.05em 0.2em rbga(black, 0.8);
-
-    &::after {
-        content: "";
-        position: fixed;
-        top: 0; right: 0; bottom: 0; left: 0;
-        background: url('../img/noise.png');
-        opacity: 0.8;
-        z-index: -1;
-    }
 }
 
 h1, h2, h3, h4, h5 {
