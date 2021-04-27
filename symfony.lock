@@ -26,6 +26,9 @@
     "ekino/phpstan-banned-code": {
         "version": "v0.3.1"
     },
+    "erusev/parsedown": {
+        "version": "1.7.4"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -51,7 +54,7 @@
         "version": "1.5.0"
     },
     "league/glide-symfony": {
-        "version": "1.0.4"
+        "version": "dev-master"
     },
     "league/mime-type-detection": {
         "version": "1.5.1"
@@ -116,10 +119,10 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "symfony/asset": {
-        "version": "v5.0.7"
+    "stenope/stenope": {
+        "version": "v0.1.0"
     },
-    "symfony/browser-kit": {
+    "symfony/asset": {
         "version": "v5.0.7"
     },
     "symfony/cache": {
@@ -286,21 +289,6 @@
     "symfony/options-resolver": {
         "version": "v5.0.7"
     },
-    "symfony/phpunit-bridge": {
-        "version": "4.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.3",
-            "ref": "6d0e35f749d5f4bfe1f011762875275cd3f9874f"
-        },
-        "files": [
-            ".env.test",
-            "bin/phpunit",
-            "phpunit.xml.dist",
-            "tests/bootstrap.php"
-        ]
-    },
     "symfony/polyfill-intl-grapheme": {
         "version": "v1.15.0"
     },
@@ -348,30 +336,6 @@
             "config/routes.yaml"
         ]
     },
-    "symfony/security-bundle": {
-        "version": "4.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.4",
-            "ref": "7b4408dc203049666fe23fabed23cbadc6d8440f"
-        },
-        "files": [
-            "config/packages/security.yaml"
-        ]
-    },
-    "symfony/security-core": {
-        "version": "v5.0.7"
-    },
-    "symfony/security-csrf": {
-        "version": "v5.0.7"
-    },
-    "symfony/security-guard": {
-        "version": "v5.0.7"
-    },
-    "symfony/security-http": {
-        "version": "v5.0.7"
-    },
     "symfony/serializer": {
         "version": "v5.0.7"
     },
@@ -386,9 +350,6 @@
     },
     "symfony/string": {
         "version": "v5.0.7"
-    },
-    "symfony/test-pack": {
-        "version": "v1.0.6"
     },
     "symfony/translation": {
         "version": "3.3",

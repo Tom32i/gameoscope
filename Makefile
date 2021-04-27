@@ -72,6 +72,9 @@ watch:
 build:
 	./node_modules/.bin/encore production
 
+build-content:
+	bin/console -e prod stenope:build
+
 build@staging: build
 build@production: build
 
@@ -93,7 +96,7 @@ clear-thumbnail@production: clear-thumbnail
 
 ## Run security checks
 security:
-	security-checker security:check
+	symfony check:security
 
 security@test: export SYMFONY_ENV = test
 security@test: security
