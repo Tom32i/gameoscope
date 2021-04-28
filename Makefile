@@ -1,7 +1,25 @@
 .SILENT:
 .PHONY: build
 
--include .manala/make/Makefile
+## Colors
+COLOR_RESET   = \033[0m
+COLOR_INFO    = \033[32m
+COLOR_COMMENT = \033[33m
+
+## Help
+help:
+	printf "${COLOR_COMMENT}Usage:${COLOR_RESET}\n"
+	printf " make [target]\n\n"
+	printf "${COLOR_COMMENT}Available targets:${COLOR_RESET}\n"
+	awk '/^[a-zA-Z\-\_0-9\.@]+:/ { \
+		helpMessage = match(lastLine, /^## (.*)/); \
+		if (helpMessage) { \
+			helpCommand = substr($$1, 0, index($$1, ":")); \
+			helpMessage = substr(lastLine, RSTART + 3, RLENGTH); \
+			printf " ${COLOR_INFO}%-16s${COLOR_RESET} %s\n", helpCommand, helpMessage; \
+		} \
+	} \
+	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
 ###########
 # Install #
@@ -52,7 +70,6 @@ warmup@production: export APP_ENV = prod
 warmup@production:
 	# Generate thumbnails
 
-
 #######
 # Run #
 #######
@@ -65,15 +82,19 @@ start:
 # Build #
 #########
 
-## Build application
+## Watch asets
 watch:
-	./node_modules/.bin/encore dev --watch
+	npx encore dev --watch
 
-build:
-	./node_modules/.bin/encore production
+## Build application
+build: build-assets build-content
 
+build-assets:
+	npx encore production
+
+build-content: export APP_ENV = prod
 build-content:
-	bin/console -e prod stenope:build
+	bin/console stenope:build
 
 build@staging: build
 build@production: build
@@ -81,14 +102,17 @@ build@production: build
 thumbnail:
 	bin/console thumbnail:generate
 
-thumbnail@production: export SYMFONY_ENV = prod
+thumbnail@production: export APP_ENV = prod
 thumbnail@production: thumbnail
 
 clear-thumbnail:
 	bin/console thumbnail:clear
 
-clear-thumbnail@production: export SYMFONY_ENV = prod
+clear-thumbnail@production: export APP_ENV = prod
 clear-thumbnail@production: clear-thumbnail
+
+serve:
+	php -S 0.0.0.0:8000 -t build
 
 ############
 # Security #
@@ -98,7 +122,7 @@ clear-thumbnail@production: clear-thumbnail
 security:
 	symfony check:security
 
-security@test: export SYMFONY_ENV = test
+security@test: export APP_ENV = test
 security@test: security
 
 ########
@@ -125,29 +149,17 @@ lint-yaml:
 lint-eslint:
 	npx eslint assets/js --ext .js,.json --fix
 
+
 ##########
-# Upload #
+# Deploy #
 ##########
 
-## Upload photos (staging)
-upload@staging:
-	chmod -R 755 var/games
-	rsync -arzv --progress --exclude '.*' var/games/* tom32i@deployer.vm:/home/tom32i/gameoscope/shared/var/games --delete
-	make cache-generate@production
+deploy@staging: build
+	rsync -arzv --delete build/* tom32i@deployer.vm:/home/tom32i/gameoscope/
 
-## Upload photos (production)
-upload@production:
-	chmod -R 755 var/games
-	rsync -arzv --progress --exclude '.*' var/games/* tom32i@tom32i.fr:/home/tom32i/gameoscope/shared/var/games --delete
-	make cache-generate@production
-
-## Download photos (staging)
-download@staging:
-	rsync -arzv --progress --exclude '.*' tom32i@deployer.vm:/home/tom32i/gameoscope/shared/var/games/* var/games
-
-## Download photos (production)
-download@production:
-	rsync -arzv --progress --exclude '.*' tom32i@tom32i.fr:/home/tom32i/gameoscope/shared/var/games/* var/games
+## Build and deploy to production
+deploy@production: build
+	rsync -arzv --delete build/* tom32i@tom32i.fr:/home/tom32i/gameoscope/
 
 ##########
 # Custom #
@@ -160,26 +172,10 @@ cache-generate:
 	bin/console showcase:cache-generate full
 	curl localhost:8000
 
-cache-generate@staging:
-	ssh deployer.vm 'cd gameoscope/current && bin/console showcase:cache-generate full'
-	curl gameoscope.deployer.vm
-
-cache-generate@production:
-	ssh tom32i.fr 'cd gameoscope/current && bin/console showcase:cache-generate full'
-	curl https://gameoscope.fr
-
 cache-clear:
 	bin/console showcase:cache-clear
 
-cache-clear@staging:
-	ssh deployer.vm 'cd gameoscope/current && bin/console showcase:cache-clear'
-
-cache-clear@production:
-	ssh tom32i.fr 'cd gameoscope/current && bin/console showcase:cache-clear'
-
 cache-regenerate: cache-clear cache-generate
-cache-regenerate@staging: cache-clear@staging cache-generate@staging
-cache-regenerate@production: cache-clear@production cache-generate@production
 
 normalize:
 	bin/console showcase:normalize-names
