@@ -1,8 +1,8 @@
 export default class Navigation {
-    constructor() {
-        this.screenshots = document.getElementsByClassName('screenshot');
-        this.previousGameUrl = document.getElementById('game-previous').getAttribute('href');
-        this.nextGameUrl = document.getElementById('game-next').getAttribute('href');
+    constructor(screenshots, previousGame, nextGame) {
+        this.screenshots = screenshots;
+        this.previousGameUrl = previousGame.getAttribute('href');
+        this.nextGameUrl = nextGame.getAttribute('href');
         this.index = 0;
         this.min = 0;
         this.max = this.screenshots.length - 1;
