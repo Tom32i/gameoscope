@@ -78,6 +78,10 @@ warmup@production:
 start:
 	symfony server:start --no-tls
 
+## Serve build
+serve:
+	php -S 0.0.0.0:8001 -t build
+
 #########
 # Build #
 #########
@@ -110,9 +114,6 @@ clear-thumbnail:
 
 clear-thumbnail@production: export APP_ENV = prod
 clear-thumbnail@production: clear-thumbnail
-
-serve:
-	php -S 0.0.0.0:8000 -t build
 
 ############
 # Security #

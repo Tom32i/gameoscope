@@ -167,9 +167,6 @@
             "config/packages/dev/debug.yaml"
         ]
     },
-    "symfony/debug-pack": {
-        "version": "v1.0.7"
-    },
     "symfony/dependency-injection": {
         "version": "v5.0.7"
     },
@@ -321,9 +318,6 @@
     "symfony/process": {
         "version": "v5.0.7"
     },
-    "symfony/profiler-pack": {
-        "version": "v1.0.4"
-    },
     "symfony/property-access": {
         "version": "v5.0.7"
     },
@@ -348,9 +342,6 @@
     },
     "symfony/serializer": {
         "version": "v5.0.7"
-    },
-    "symfony/serializer-pack": {
-        "version": "v1.0.3"
     },
     "symfony/service-contracts": {
         "version": "v2.0.1"
@@ -392,9 +383,6 @@
             "config/packages/twig.yaml",
             "templates/base.html.twig"
         ]
-    },
-    "symfony/twig-pack": {
-        "version": "v1.0.0"
     },
     "symfony/var-dumper": {
         "version": "v5.0.7"
