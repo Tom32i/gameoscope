@@ -2,3 +2,7 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
       google_analytics_token: "%env(GOOGLE_ANALYTICS_TOKEN)%"
+
+when@test:
+    twig:
+        strict_variables: true
