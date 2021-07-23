@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -39,7 +41,7 @@ class GameCommand extends Command
 
         $path = sprintf('%s/%s', $this->path, $slug);
 
-        if (\file_exists($path)) {
+        if (file_exists($path)) {
             $io->error("Le jeu \"${slug}\" existe déjà.");
 
             return 1;
@@ -97,6 +99,6 @@ class GameCommand extends Command
 
     private function getSlug(string $name): string
     {
-        return strtolower($this->slugger->slug($name));
+        return strtolower((string) $this->slugger->slug($name));
     }
 }
