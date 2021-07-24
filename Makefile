@@ -91,7 +91,7 @@ watch:
 	npx encore dev --watch
 
 ## Build application
-build: build-assets build-content
+build: build-assets build-content optimize
 
 build-assets:
 	npx encore production
@@ -102,6 +102,9 @@ build-content:
 
 build@staging: build
 build@production: build
+
+optimize:
+	node optimize.js build
 
 thumbnail:
 	bin/console thumbnail:generate
