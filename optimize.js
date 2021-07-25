@@ -2,8 +2,41 @@ const sharp = require('sharp');
 const glob = require('glob');
 
 const [path] = process.argv.slice(2);
-const png = file => sharp(file).png({ quality: 80, compressionLevel: 9 }).toBuffer().then(buffer => sharp(buffer).toFile(file));
-const jpg = file => sharp(file).jpeg({ quality: 80 }).toBuffer().then(buffer => sharp(buffer).toFile(file));
 
-glob(`${path}/**/*.png`, { ignore: `${path}/download/**/*.png` }, (error, files) => files.forEach(png));
-glob(`${path}/**/*.jpg`, { ignore: `${path}/download/**/*.jpg` }, (error, files) => files.forEach(jpg));
+function files(input, callback) {
+  const { src, ...options } = input;
+
+  return glob(src, options, (error, files) => files.forEach(callback));
+}
+
+function optimize(file, options = {}) {
+  const { resize, ...params } = options;
+  const ext = file.split('.').pop();
+  let img = sharp(file);
+
+  if (resize) {
+    img = img.resize(...resize);
+  }
+
+  switch (ext) {
+    case 'jpeg':
+    case 'jpg':
+      img = img.jpeg({ ...params });
+      break;
+
+    case 'png':
+      img = img.png({ compressionLevel: 9, ...params });
+      break;
+
+    case 'gif':
+      img = img.gif({ ...params });
+      break;
+
+    default:
+      throw new Error(`Unsupported image type "${file}".`);
+  }
+
+  return img.toBuffer().then(buffer => sharp(buffer).toFile(file));
+}
+
+files({ src: `${path}/**/*.@(png|jpg|jpeg|gif)`, ignore: `${path}/download/**/*.@(png|jpg|jpeg|gif)` }, optimize);

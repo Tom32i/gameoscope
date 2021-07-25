@@ -21,10 +21,10 @@
 {% endblock %}
 
 {% block content %}
-    {% set size = dimensions('full') %}
+    {% set size = dimensions('thumbnail') %}
     {% for index, image in game.images %}
         <a class="screenshot" href="{{ download(image.path) }}" download>
-            <img id="screenshot-{{ index }}" title="{{ image.slug }}" src="{{ image(image.path, 'full') }}" width="{{ size.width }}" height="{{ size.height }}" loading="lazy" />
+            <img id="screenshot-{{ index }}" title="{{ image.slug }}" src="{{ image(image.path, 'thumbnail') }}" width="{{ size.width }}" height="{{ size.height }}" loading="lazy" />
         </a>
     {% endfor %}
 {% endblock %}
