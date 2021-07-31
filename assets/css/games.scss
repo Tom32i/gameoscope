@@ -4,22 +4,30 @@
         position: relative;
         text-decoration: none;
         margin: 3em 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 200ms ease-in-out;
+        display: block;
         box-shadow: 0 0.5em 3em rgba(black, 0.66);
+        transition: transform 200ms ease-in-out;
+
+        picture, img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
 
         &:hover {
             transform: scale3d(1.05, 1.05, 1);
 
             .title {
-                transform: scale3d(1.05, 1.05, 1);
+                transform: translate3d(0, -50%, 0) scale3d(1.05, 1.05, 1);
             }
         }
 
         .title {
             position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
             width: 100%;
             color: white;
             font-size: 4em;
@@ -30,6 +38,7 @@
             text-align: center;
             transition: transform 200ms ease-in-out;
             text-shadow: 0px 0.1em 0.3em rgba(black, 0.6);
+            transform: translate3d(0, -50%, 0);
         }
     }
 }

@@ -2,4 +2,11 @@ tom32i_showcase:
   path: "%kernel.project_dir%/var/games"
   cache: "%kernel.project_dir%/var/cache/games"
   presets:
-    thumbnail: { w: 1280, h: 720, dpr: 1, fit: crop }
+    large: { w: 1920, h: 1080, dpr: 1, fit: crop }
+    large@2: { w: 1920, h: 1080, dpr: 2, fit: crop }
+    medium: { w: 1280, h: 720, dpr: 1, fit: crop }
+    medium@2: { w: 1280, h: 720, dpr: 2, fit: crop }
+    small: { w: 960, h: 540, dpr: 1, fit: crop }
+    small@2: { w: 960, h: 540, dpr: 2, fit: crop }
+    mobile: { w: 656, h: 369, dpr: 1, fit: crop }
+    mobile@2: { w: 656, h: 369, dpr: 2, fit: crop }

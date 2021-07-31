@@ -1,0 +1,7 @@
+<picture>
+    <source srcset="{{ image(image.path, 'mobile') }}, {{ image(image.path, 'mobile@2') }} 2x" media="(max-width: 768px)">
+    <source srcset="{{ image(image.path, 'small') }}, {{ image(image.path, 'small@2') }} 2x" media="(max-width: 1440px)">
+    <source srcset="{{ image(image.path, 'medium') }}, {{ image(image.path, 'medium@2') }} 2x" media="(max-width: 2160px)">
+    <source srcset="{{ image(image.path, 'large') }}, {{ image(image.path, 'large@2') }} 2x" media="(min-width: 2161px)">
+    <img title="{{ image.slug }}" src="{{ image(image.path, 'mobile') }}" loading="lazy" />
+</picture>

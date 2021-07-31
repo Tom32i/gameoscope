@@ -44,9 +44,14 @@
         line-height: 0;
         margin: 3em 0;
         box-shadow: 0 1em 3em rgba(black, 0.66);
+        scroll-margin-top: 3em;
+        outline: none;
 
-        img {
-            scroll-margin-top: 3em;
+        picture, img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
         }
 
         &:before {

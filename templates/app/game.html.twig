@@ -21,12 +21,11 @@
 {% endblock %}
 
 {% block content %}
-    {% set size = dimensions('thumbnail') %}
-    {% for index, image in game.images %}
-        <a class="screenshot" href="{{ download(image.path) }}" download>
-            <img id="screenshot-{{ index }}" title="{{ image.slug }}" src="{{ image(image.path, 'thumbnail') }}" width="{{ size.width }}" height="{{ size.height }}" loading="lazy" />
+    {%- for index, image in game.images -%}
+        <a id="screenshot-{{ index }}" class="screenshot" href="{{ download(image.path) }}" download>
+            {% include 'app/image.html.twig' with { image: image } only %}
         </a>
-    {% endfor %}
+    {%- endfor -%}
 {% endblock %}
 
 {% block footer %}
