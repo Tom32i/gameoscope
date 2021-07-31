@@ -1,101 +1,101 @@
 @media (max-width: 2160px) {
-    .container {  max-width: 1280px; }
+  .container {  max-width: 1280px; }
 }
 
 @media (max-width: 1440px) {
-    .container {  max-width: 960px; }
+  .container {  max-width: 960px; }
 
-    body {
-        font-size: 20px;
+  body {
+    font-size: 20px;
+  }
+
+  .header {
+    margin: 2em 0 3em;
+  }
+
+  .page-games .game {
+    margin: 2em 0;
+
+    .title {
+      font-size: 4em;
+      padding: 1em;
     }
+  }
 
-    .header {
-        margin: 2em 0 3em 0;
+  .page-game .screenshot {
+    margin: 2em 0;
+
+    img {
+      scroll-margin-top: 2em;
     }
-
-    .page-games .game {
-        margin: 2em 0;
-
-        .title {
-            font-size: 4em;
-            padding: 1em;
-        }
-    }
-
-    .page-game .screenshot {
-        margin: 2em 0;
-
-        img {
-            scroll-margin-top: 2em;
-        }
-    }
+  }
 }
 
 @media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
+  body {
+    font-size: 14px;
+  }
 
-    .links {
-        font-size: 1.2em;
-    }
+  .links {
+    font-size: 1.2em;
+  }
 }
 
 @media (max-width: 414px) {
-    body {
-        padding: 0 2em;
+  body {
+    padding: 0 2em;
+  }
+
+  .page-games .game {
+    margin: 1em 0;
+
+    .title {
+      font-size: 2.2em;
+    }
+  }
+
+  .page-game .screenshot {
+    margin: 1em 0;
+
+    img {
+      scroll-margin-top: 1em;
+    }
+  }
+
+  .bottom-nav {
+    margin-top: 2em;
+  }
+
+  .page-game {
+    .game-title {
+      font-size: 1.4em;
     }
 
-    .page-games .game {
-        margin: 1em 0;
-
-        .title {
-            font-size: 2.2em;
-        }
+    .game-studio {
+      font-size: 1.2em;
     }
+  }
 
-    .page-game .screenshot {
-        margin: 1em 0;
+  .footer {
+    margin: 4em 0;
 
-        img {
-            scroll-margin-top: 1em;
-        }
+    .links a {
+      font-size: 0.8em;
+      margin: 0 0.5em;
     }
-
-    .bottom-nav {
-        margin-top: 2em;
-    }
-
-    .page-game {
-        .game-title {
-            font-size: 1.4em;
-        }
-
-        .game-studio {
-            font-size: 1.2em;
-        }
-    }
-
-    .footer {
-        margin: 4em 0;
-
-        .links a {
-            font-size: 0.8em;
-            margin: 0 0.5em;
-        }
-    }
+  }
 }
 
 
 @media (max-width: 320px) {
-    body {
-        font-size: 12px;
-    }
+  body {
+    font-size: 12px;
+  }
 
-    .page-games .game {
-        .title {
-            font-size: 2em;
-            padding: 0.8em;
-        }
+  .page-games .game {
+    .title {
+      font-size: 2em;
+      padding: 0.8em;
     }
+  }
 }

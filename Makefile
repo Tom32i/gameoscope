@@ -134,7 +134,7 @@ security@test: security
 # Lint #
 ########
 
-lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint
+lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint lint.stylelint
 
 lint-phpcsfixer:
 	vendor/bin/php-cs-fixer fix
@@ -151,6 +151,8 @@ lint-yaml:
 lint-eslint:
 	npx eslint assets/js --ext .js,.json --fix
 
+lint.stylelint:
+	npx stylelint 'assets/css/**/*.scss' --fix
 
 ##########
 # Deploy #
