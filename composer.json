@@ -30,7 +30,6 @@
         "symfony/translation": "^5.3",
         "symfony/twig-bundle": "5.3.*",
         "symfony/web-link": "^5.3",
-        "symfony/webpack-encore-bundle": "^1.12",
         "symfony/yaml": "^5.3",
         "tom32i/showcase-bundle": "^1.0",
         "twig/extra-bundle": "^2.12|^3.0",
@@ -46,7 +45,8 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/stopwatch": "^5.3",
         "symfony/var-dumper": "^5.3",
-        "symfony/web-profiler-bundle": "^5.3"
+        "symfony/web-profiler-bundle": "^5.3",
+        "symfony/webpack-encore-bundle": "^1.12"
     },
     "config": {
         "optimize-autoloader": true,

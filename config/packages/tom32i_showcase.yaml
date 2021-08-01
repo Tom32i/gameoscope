@@ -5,7 +5,7 @@ tom32i_showcase:
     large: { w: 1920, h: 1080, dpr: 1, fit: crop }
     #largeX2: { w: 1920, h: 1080, dpr: 2, fit: crop }
     medium: { w: 1280, h: 720, dpr: 1, fit: crop }
-    mediumX2: { w: 1280, h: 720, dpr: 2, fit: crop }
+    #mediumX2: { w: 1280, h: 720, dpr: 2, fit: crop }
     small: { w: 960, h: 540, dpr: 1, fit: crop }
     smallX2: { w: 960, h: 540, dpr: 2, fit: crop }
     mobile: { w: 656, h: 369, dpr: 1, fit: crop }
@@ -13,7 +13,7 @@ tom32i_showcase:
     largeWP: { w: 1920, h: 1080, dpr: 1, fit: crop, fm: webp }
     #largeX2WP: { w: 1920, h: 1080, dpr: 2, fit: crop, fm: webp }
     mediumWP: { w: 1280, h: 720, dpr: 1, fit: crop, fm: webp }
-    mediumX2WP: { w: 1280, h: 720, dpr: 2, fit: crop, fm: webp }
+    #mediumX2WP: { w: 1280, h: 720, dpr: 2, fit: crop, fm: webp }
     smallWP: { w: 960, h: 540, dpr: 1, fit: crop, fm: webp }
     smallX2WP: { w: 960, h: 540, dpr: 2, fit: crop, fm: webp }
     mobileWP: { w: 656, h: 369, dpr: 1, fit: crop, fm: webp }
