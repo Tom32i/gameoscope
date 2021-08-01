@@ -1,0 +1,16 @@
+{
+  "path": "build/**/*.@(png|jpg|jpeg|gif|webp)",
+  "ignore": "build/download/**/*",
+  "cache": {
+    "memory":  1000
+  },
+  "options": {
+    "quality": 75
+  },
+  "png": {
+    "compressionLevel": 9
+  },
+  "webp": {
+    "reductionEffort": 6
+  }
+}

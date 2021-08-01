@@ -28,11 +28,15 @@ h5 {
   text-transform: uppercase;
 }
 
-h1 { font-size: 2em; }
+h1 { font-size: 2em; white-space: nowrap; }
 h2 { font-size: 1.8em; }
 h3 { font-size: 1.6em; }
 h4 { font-size: 1.4em; }
 h5 { font-size: 1.2em; }
+
+.logo {
+  white-space: nowrap;
+}
 
 img {
   background-color: $color-text;

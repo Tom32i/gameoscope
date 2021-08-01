@@ -36,8 +36,16 @@
     font-size: 14px;
   }
 
+  .header {
+    margin: 2em 0;
+  }
+
+  .logo {
+    font-size: 1.8em;
+  }
+
   .links {
-    font-size: 1.2em;
+    font-size: 1.6em;
   }
 }
 
@@ -80,8 +88,10 @@
     margin: 4em 0;
 
     .links a {
-      font-size: 0.8em;
+      font-size: 0.7em;
       margin: 0 0.5em;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }

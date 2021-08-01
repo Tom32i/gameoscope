@@ -88,7 +88,7 @@ build@staging: build
 build@production: build
 
 optimize:
-	node optimize.js build
+	npx optimage-cli --config="optimage.json"
 
 cache: export APP_ENV = prod
 cache:
