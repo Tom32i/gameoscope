@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block meta_title %}{{ game.name }} sur Game-o-scope{% endblock %}
-{% block meta_cover 'https://gameoscope.fr' ~ image((game.images|first).path, 'thumbnail') %}
+{% block meta_cover 'https://gameoscope.fr' ~ image((game.images|first).path, 'medium') %}
 {% block body_class 'page-game' %}
 
 {% block header_title %}
