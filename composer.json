@@ -22,13 +22,13 @@
         "symfony/monolog-bundle": "^3.7",
         "symfony/notifier": "^5.3",
         "symfony/process": "^5.3",
-        "symfony/property-access": "5.3.*",
-        "symfony/property-info": "5.3.*",
-        "symfony/runtime": "5.3.*",
-        "symfony/serializer": "5.3.*",
+        "symfony/property-access": "^5.3",
+        "symfony/property-info": "^5.3",
+        "symfony/runtime": "^5.3",
+        "symfony/serializer": "^5.3",
         "symfony/string": "^5.3",
         "symfony/translation": "^5.3",
-        "symfony/twig-bundle": "5.3.*",
+        "symfony/twig-bundle": "^5.3",
         "symfony/web-link": "^5.3",
         "symfony/yaml": "^5.3",
         "tom32i/showcase-bundle": "^1.0",
@@ -94,7 +94,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.3.*"
+            "require": "^5.3"
         }
     }
 }
