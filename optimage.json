@@ -1,0 +1,14 @@
+{
+  "path": "build/**/*.@(png|jpg|jpeg)",
+  "ignore": "build/download/**/*",
+  "cache": {
+    "memory":  1000
+  },
+  "options": {
+    "quality": 80
+  },
+  "png": {
+    "quality": 100,
+    "compressionLevel": 9
+  }
+}

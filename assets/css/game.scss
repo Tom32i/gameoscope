@@ -1,84 +1,93 @@
 .page-game {
-    header {
-        margin: 2em 0;
+  header {
+    margin: 2em 0;
+  }
+
+  .game-info {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 3em;
+  }
+
+  .game-title {
+    font-size: 1.8em;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.4em;
+    text-align: center;
+  }
+
+  .game-year {
+    color: $color-text-light;
+  }
+
+  .game-studio {
+    color: $color-text-light;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1em;
+    text-transform: none;
+
+    a,
+    a:visited {
+      color: $color-text-light;
+      text-decoration: none;
     }
 
-    .game-info {
-        margin: 0 0 3em 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    a:hover,
+    a:active {
+      color: $color-text;
+    }
+  }
+
+  .screenshot {
+    box-shadow: 0 1em 3em rgba(#000, 0.66);
+    display: block;
+    line-height: 0;
+    margin: 3em 0;
+    outline: none;
+    position: relative;
+    scroll-margin-top: 3em;
+
+    picture,
+    img {
+      aspect-ratio: 16 / 9;
+      display: block;
+      height: auto;
+      width: 100%;
     }
 
-    .game-title {
-        font-size: 1.8em;
-        margin: 0 0 0.4em 0;
-        letter-spacing: 0.05em;
-        text-align: center;
+    &::before {
+      color: #fff;
+      content: $icon-download;
+      display: inline-block;
+      font-family: '#{$icomoon-font-family}' !important;
+      font-size: 10em;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-style: normal;
+      font-variant: normal;
+      font-weight: normal;
+      left: 50%;
+      line-height: 1;
+      opacity: 0;
+      position: absolute;
+
+      speak: none;
+      text-shadow: 0 0.05em 0.1em rgba(#000, 0.25);
+      text-transform: none;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      transition: opacity 200ms linear;
     }
 
-    .game-year {
-        color: $color-text-light;
+    &:hover,
+    &:active {
+      &::before {
+        opacity: 1;
+      }
     }
-
-    .game-studio {
-        font-size: 1em;
-        line-height: 1em;
-        font-weight: normal;
-        text-transform: none;
-        color: $color-text-light;
-
-        a, a:visited {
-            color: $color-text-light;
-            text-decoration: none;
-
-            &:hover, :active {
-                color: $color-text;
-            }
-        }
-    }
-
-    .screenshot {
-        display: block;
-        position: relative;
-        line-height: 0;
-        margin: 3em 0;
-        box-shadow: 0 1em 3em rgba(black, 0.66);
-
-        img {
-            scroll-margin-top: 3em;
-        }
-
-        &:before {
-            font-size: 10em;
-            content: $icon-download;
-            position: absolute;
-            font-family: '#{$icomoon-font-family}' !important;
-            top: 50%;
-            left: 50%;
-            transform: translate3d(-50%, -50%, 0);
-            opacity: 0;
-            color: white;
-            text-shadow: 0px 0.05em 0.1em rgba(black, 0.25);
-            transition: opacity 200ms linear;
-
-            speak: none;
-            font-style: normal;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            display: inline-block;
-
-            /* Better Font Rendering =========== */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        &:hover, &:active {
-            &:before {
-                opacity: 1;
-            }
-        }
-    }
+  }
 }

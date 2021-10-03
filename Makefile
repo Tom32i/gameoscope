@@ -53,23 +53,6 @@ install@production:
 var/games:
 	cd var && git clone git@tom32i.fr:/home/git/gameoscope-screenshot.git games
 
-##########
-# Warmup #
-##########
-
-warmup:
-	# Generate thumbnails
-
-# Note: This task is invoked after a deployment to staging
-warmup@staging: export APP_ENV = prod
-warmup@staging:
-	# Generate thumbnails
-
-# Note: This task is invoked after a deployment to production
-warmup@production: export APP_ENV = prod
-warmup@production:
-	# Generate thumbnails
-
 #######
 # Run #
 #######
@@ -91,7 +74,7 @@ watch:
 	npx encore dev --watch
 
 ## Build application
-build: build-assets build-content optimize
+build: build-assets cache build-content optimize
 
 build-assets:
 	npx encore production
@@ -105,19 +88,15 @@ build@staging: build
 build@production: build
 
 optimize:
-	node optimize.js build
+	npx optimage-cli --config="optimage.json"
 
-thumbnail:
-	bin/console thumbnail:generate
+cache: export APP_ENV = prod
+cache:
+	bin/console showcase:cache-generate
 
-thumbnail@production: export APP_ENV = prod
-thumbnail@production: thumbnail
-
-clear-thumbnail:
-	bin/console thumbnail:clear
-
-clear-thumbnail@production: export APP_ENV = prod
-clear-thumbnail@production: clear-thumbnail
+clear-cache: export APP_ENV = prod
+clear-cache:
+	bin/console showcase:cache-clear
 
 ############
 # Security #
@@ -134,7 +113,7 @@ security@test: security
 # Lint #
 ########
 
-lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint
+lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint lint.stylelint
 
 lint-phpcsfixer:
 	vendor/bin/php-cs-fixer fix
@@ -151,6 +130,8 @@ lint-yaml:
 lint-eslint:
 	npx eslint assets/js --ext .js,.json --fix
 
+lint.stylelint:
+	npx stylelint 'assets/css/**/*.scss' --fix
 
 ##########
 # Deploy #
