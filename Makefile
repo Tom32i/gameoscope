@@ -113,7 +113,7 @@ security@test: security
 # Lint #
 ########
 
-lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint lint.stylelint
+lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint lint-stylelint
 
 lint-phpcsfixer:
 	vendor/bin/php-cs-fixer fix
@@ -130,7 +130,7 @@ lint-yaml:
 lint-eslint:
 	npx eslint assets/js --ext .js,.json --fix
 
-lint.stylelint:
+lint-stylelint:
 	npx stylelint 'assets/css/**/*.scss' --fix
 
 ##########
@@ -162,7 +162,3 @@ cache-regenerate: cache-clear cache-generate
 
 normalize:
 	bin/console showcase:normalize-names
-
-link-showcase:
-	rm -rf ./vendor/tom32i/showcase-bundle
-	ln -s ~/Sites/opensource/ShowcaseBundle ./vendor/tom32i/showcase-bundle
