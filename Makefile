@@ -115,6 +115,7 @@ security@test: security
 
 lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint lint-stylelint
 
+lint-phpcsfixer: export PHP_CS_FIXER_IGNORE_ENV = true
 lint-phpcsfixer:
 	vendor/bin/php-cs-fixer fix
 

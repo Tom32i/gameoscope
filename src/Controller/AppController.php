@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,7 +30,7 @@ class AppController extends AbstractController
     /**
      * @Route("/", name="games")
      */
-    public function games()
+    public function games(): Response
     {
         return $this->render('app/index.html.twig', [
             'games' => $this->listGames(),
@@ -39,7 +40,7 @@ class AppController extends AbstractController
     /**
      * @Route("/a-propos", name="about")
      */
-    public function about()
+    public function about(): Response
     {
         return $this->render('app/about.html.twig');
     }
@@ -47,7 +48,7 @@ class AppController extends AbstractController
     /**
      * @Route("/{game}", name="game")
      */
-    public function game(string $game)
+    public function game(string $game): Response
     {
         $game = $this->browser->read($game, ['[slug]' => true]);
 
@@ -56,7 +57,7 @@ class AppController extends AbstractController
         }
 
         $games = $this->listGames();
-        $index = array_search($game, $games);
+        $index = (int) array_search($game, $games);
         $next = isset($games[$index + 1]) ? $games[$index + 1] : $games[0];
         $previous = isset($games[$index - 1]) ? $games[$index - 1] : $games[\count($games) - 1];
 
