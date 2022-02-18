@@ -138,6 +138,7 @@ lint-stylelint:
 # Deploy #
 ##########
 
+## Build and deploy to staging
 deploy@staging: build
 	rsync -arzv --delete build/* tom32i@deployer.vm:/home/tom32i/gameoscope/
 
