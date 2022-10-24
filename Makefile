@@ -150,6 +150,7 @@ deploy@production: build
 # Custom #
 ##########
 
+## Create a new game directory
 game:
 	bin/console app:game
 
