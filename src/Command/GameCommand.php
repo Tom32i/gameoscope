@@ -36,21 +36,21 @@ class GameCommand extends Command
 
         $io->title('Ajout d\'un jeu !');
 
-        $name = $io->ask('Nom du jeu');
-        $slug = $io->ask('Slug', $this->getSlug($name));
+        $name = \strval($io->ask('Nom du jeu'));
+        $slug = \strval($io->ask('Slug', $this->getSlug($name)));
 
         $path = sprintf('%s/%s', $this->path, $slug);
 
         if (file_exists($path)) {
-            $io->error("Le jeu \"${slug}\" existe déjà.");
+            $io->error("Le jeu \"{$slug}\" existe déjà.");
 
             return 1;
         }
 
-        $year = $io->ask('Année de sortie');
+        $year = \intval($io->ask('Année de sortie'));
         $date = $io->ask('Date du publication', (new \DateTimeImmutable())->format('Y-m-d'));
-        $studioName = $io->ask('Nom du studio');
-        $studioUrl = $io->ask('Url du studio');
+        $studioName = \strval($io->ask('Nom du studio'));
+        $studioUrl = \strval($io->ask('Url du studio'));
 
         $io->definitionList(
             ['Slug' => $slug],

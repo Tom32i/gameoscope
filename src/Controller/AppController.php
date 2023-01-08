@@ -6,20 +6,14 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PropertyAccess\PropertyAccess;
-use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Routing\Annotation\Route;
 use Tom32i\ShowcaseBundle\Service\Browser;
 
 class AppController extends AbstractController
 {
-    private Browser $browser;
-    private PropertyAccessor $propertyAccessor;
-
-    public function __construct(Browser $browser)
-    {
-        $this->browser = $browser;
-        $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
+    public function __construct(
+        private Browser $browser
+    ) {
     }
 
     private function listGames(): array
@@ -52,12 +46,16 @@ class AppController extends AbstractController
     {
         $game = $this->browser->read($game, ['[slug]' => true]);
 
-        if (!$game || $this->propertyAccessor->getValue($game, '[draft]')) {
+        if ($game === null) {
+            throw $this->createNotFoundException('Game not found');
+        }
+
+        if (isset($game['draft']) && $game['draft'] === true) {
             throw $this->createNotFoundException('Game not found');
         }
 
         $games = $this->listGames();
-        $index = (int) array_search($game, $games);
+        $index = (int) array_search($game, $games, true);
         $next = isset($games[$index + 1]) ? $games[$index + 1] : $games[0];
         $previous = isset($games[$index - 1]) ? $games[$index - 1] : $games[\count($games) - 1];
 
