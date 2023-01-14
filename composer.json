@@ -29,7 +29,7 @@
         "symfony/twig-bundle": "^6.2",
         "symfony/web-link": "^6.2",
         "symfony/yaml": "^6.2",
-        "tom32i/showcase-bundle": "^1.1",
+        "tom32i/showcase-bundle": "^1.2",
         "twig/extra-bundle": "^3.4",
         "twig/twig": "^3.4"
     },
