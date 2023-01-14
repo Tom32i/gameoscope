@@ -7,6 +7,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Tom32i\ShowcaseBundle\Model\Group;
 use Tom32i\ShowcaseBundle\Service\Browser;
 
 class AppController extends AbstractController
@@ -14,11 +15,6 @@ class AppController extends AbstractController
     public function __construct(
         private Browser $browser
     ) {
-    }
-
-    private function listGames(): array
-    {
-        return $this->browser->list(['[date]' => false], ['[slug]' => true], ['[draft]' => false]);
     }
 
     /**
@@ -29,14 +25,6 @@ class AppController extends AbstractController
         return $this->render('app/index.html.twig', [
             'games' => $this->listGames(),
         ]);
-    }
-
-    /**
-     * @Route("/a-propos", name="about")
-     */
-    public function about(): Response
-    {
-        return $this->render('app/about.html.twig');
     }
 
     /**
@@ -64,5 +52,21 @@ class AppController extends AbstractController
             'previous' => $previous,
             'next' => $next,
         ]);
+    }
+
+    /**
+     * @Route("/a-propos", name="about")
+     */
+    public function about(): Response
+    {
+        return $this->render('app/about.html.twig');
+    }
+
+    /**
+     * @return Group[]
+     */
+    private function listGames(): array
+    {
+        return $this->browser->list(['[date]' => false], ['[slug]' => true], ['[draft]' => false]);
     }
 }

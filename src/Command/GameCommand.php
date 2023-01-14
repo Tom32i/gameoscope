@@ -4,16 +4,20 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
+#[AsCommand(
+    name: 'app:game',
+    description: 'Create a new game.',
+    hidden: false,
+)]
 class GameCommand extends Command
 {
-    protected static $defaultName = 'app:game';
-
     private string $path;
     private AsciiSlugger $slugger;
 
@@ -23,11 +27,6 @@ class GameCommand extends Command
         $this->slugger = new AsciiSlugger();
 
         parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        $this->setDescription('Create a new game');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -44,7 +43,7 @@ class GameCommand extends Command
         if (file_exists($path)) {
             $io->error("Le jeu \"{$slug}\" existe déjà.");
 
-            return 1;
+            return Command::FAILURE;
         }
 
         $year = \intval($io->ask('Année de sortie'));
@@ -61,7 +60,7 @@ class GameCommand extends Command
         );
 
         if (!$io->confirm('Créer le jeu ?')) {
-            return 0;
+            return Command::FAILURE;
         }
 
         $io->note('Création du repertoir du jeu ...');
@@ -81,7 +80,7 @@ class GameCommand extends Command
 
         $io->success('Jeu créé!');
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     private function createPath(string $path): void
@@ -89,6 +88,9 @@ class GameCommand extends Command
         mkdir($path);
     }
 
+    /**
+     * @param array<string, mixed> $info
+     */
     private function createConfigFile(string $path, array $info): void
     {
         file_put_contents(
