@@ -26,7 +26,7 @@ help:
 ###########
 
 ## Setup project
-setup: install var/games build
+setup: install var/games
 
 ## Install application
 install:
