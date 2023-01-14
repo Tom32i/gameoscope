@@ -17,9 +17,7 @@ class AppController extends AbstractController
     ) {
     }
 
-    /**
-     * @Route("/", name="games")
-     */
+    #[Route('/', name: 'games')]
     public function games(): Response
     {
         return $this->render('app/index.html.twig', [
@@ -27,9 +25,7 @@ class AppController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{game}", name="game")
-     */
+    #[Route('/{game}', name: 'game')]
     public function game(string $game): Response
     {
         $game = $this->browser->read($game, ['[slug]' => true]);
@@ -38,7 +34,7 @@ class AppController extends AbstractController
             throw $this->createNotFoundException('Game not found');
         }
 
-        if (isset($game['draft']) && $game['draft'] === true) {
+        if (($game['draft'] ?? false) === true) {
             throw $this->createNotFoundException('Game not found');
         }
 
@@ -54,9 +50,7 @@ class AppController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/a-propos", name="about")
-     */
+    #[Route('/a-propos', name: 'about')]
     public function about(): Response
     {
         return $this->render('app/about.html.twig');
@@ -67,6 +61,10 @@ class AppController extends AbstractController
      */
     private function listGames(): array
     {
-        return $this->browser->list(['[date]' => false], ['[slug]' => true], ['[draft]' => false]);
+        return $this->browser->list(
+            ['[date]' => false],
+            ['[slug]' => true],
+            ['[draft]' => false]
+        );
     }
 }
