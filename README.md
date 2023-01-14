@@ -6,10 +6,8 @@ Place screenshots in:
 
 ## Setup
 
-    make install
+    make setup
 
-## Upload
+## Deploy
 
-    make upload@production
-
-    make cache-regenerate@production
+    make deploy@production
