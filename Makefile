@@ -26,7 +26,7 @@ help:
 ###########
 
 ## Setup project
-setup: install var/games
+setup: install games
 
 ## Install application
 install:
@@ -50,8 +50,8 @@ install@production:
 	npm install
 
 # Create screenshot repository
-var/games:
-	cd var && git clone git@tom32i.fr:/home/git/gameoscope-screenshot.git games
+games:
+	git clone git@tom32i.fr:/home/git/gameoscope-screenshot.git games
 
 #######
 # Run #

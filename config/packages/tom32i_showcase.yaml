@@ -1,5 +1,5 @@
 tom32i_showcase:
-  path: "%kernel.project_dir%/var/games"
+  path: "%kernel.project_dir%/games"
   cache: "%kernel.project_dir%/var/cache/games"
   presets:
     large: { w: 1920, h: 1080, dpr: 1, fit: crop }

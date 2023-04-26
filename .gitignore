@@ -20,3 +20,4 @@ yarn-error.log
 ###< friendsofphp/php-cs-fixer ###
 
 /build
+/games

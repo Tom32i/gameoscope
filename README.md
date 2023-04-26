@@ -12,7 +12,7 @@ Install dependencies and setup games folder:
 
     make game
 
-Put the screenshots in `var/games/{my-game}`.
+Put the screenshots in `games/{my-game}`.
 
 ## Development
 
