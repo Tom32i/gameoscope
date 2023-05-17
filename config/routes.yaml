@@ -3,5 +3,7 @@ tom32i_showcase:
     type: annotation
 
 controllers:
-    resource: ../src/Controller/
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
     type: attribute
