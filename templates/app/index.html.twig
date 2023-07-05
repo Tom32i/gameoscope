@@ -5,7 +5,7 @@
 {% block content %}
     {% for game in games %}
         <a class="game" href="{{ path('game', { game: game.slug }) }}">
-            {% include 'app/image.html.twig' with { image: game.images|first } only %}
+            {% include 'app/image.html.twig' with { image: game.images|first, lazy: loop.index > 1 } only %}
             <h2 class="title">{{ game.name|default(game.slug) }}</h2>
         </a>
     {% endfor %}

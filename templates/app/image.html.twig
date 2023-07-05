@@ -7,5 +7,5 @@
     <source srcset="{{ image(image.path, 'medium') }}" media="(max-width: 2160px)">
     <source srcset="{{ image(image.path, 'largeWP') }}" media="(min-width: 2161px)" type="image/webp">
     <source srcset="{{ image(image.path, 'large') }}" media="(min-width: 2161px)">
-    <img title="{{ image.slug }}" src="{{ image(image.path, 'mobile') }}" loading="lazy" />
+    <img title="{{ image.slug }}" src="{{ image(image.path, 'mobile') }}" {% if lazy %}loading="lazy"{% endif %} />
 </picture>

@@ -23,7 +23,7 @@
 {% block content %}
     {%- for index, image in game.images -%}
         <a id="screenshot-{{ index }}" class="screenshot" href="{{ download(image.path) }}" download>
-            {% include 'app/image.html.twig' with { image: image } only %}
+            {% include 'app/image.html.twig' with { image: image, lazy: loop.index > 1 } only %}
         </a>
     {%- endfor -%}
 {% endblock %}
