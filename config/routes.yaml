@@ -1,6 +1,6 @@
 tom32i_showcase:
     resource: "@Tom32iShowcaseBundle/Controller/"
-    type: annotation
+    type: attribute
 
 controllers:
     resource:
