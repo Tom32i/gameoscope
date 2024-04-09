@@ -21,3 +21,7 @@ yarn-error.log
 
 /build
 /games
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
