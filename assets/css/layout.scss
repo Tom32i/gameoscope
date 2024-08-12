@@ -11,7 +11,7 @@ body {
   font-size: 25px;
   min-height: 100vh;
   padding: 0 4em;
-  perspective: 100vh;
+  //perspective: 100vh;
   text-shadow: 0 0.05em 0.2em rbga(#000, 0.8);
 }
 
@@ -185,5 +185,18 @@ a:visited {
 
   &:hover {
     text-decoration: none;
+  }
+}
+
+.top {
+  position: fixed;
+  font-size: 1.4em;
+  right: 1em;
+  bottom: 1em;
+  z-index: 100;
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
   }
 }
