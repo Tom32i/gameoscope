@@ -5,10 +5,11 @@ $color-text: darken($color-text-dark, 15%);
 $color-text-light: darken($color-text, 30%);
 
 // Icons
-$icomoon-font-family: "icons" !default;
-$icomoon-font-path: "../fonts" !default;
+$icomoon-font-family: 'icons' !default;
+$icomoon-font-path: '../fonts' !default;
 
 $icon-top: unquote('"\\e901"');
+$icon-eye: unquote('"\\e904"');
 $icon-download: unquote('"\\e900"');
 $icon-info: unquote('"\\ea0c"');
 $icon-instagram: unquote('"\\ea92"');

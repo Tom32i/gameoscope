@@ -1,0 +1,56 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body_class 'page-screenshot' %}
+
+{% block content %}
+    <section>
+        <hgroup>
+            <h2>{{ game.name }}</h2>
+            <p><strong>{{ game.images|length }}</strong> screenshots</p>
+        </hgroup>
+
+        <hr>
+
+        <div class="grid">
+            <a href="{{ path('game', { game: game.slug }) }}" target="_blank"  role="button" class="outline secondary">Prévisualiser</a>
+            <a href="{{ path('admin_shuffle', { game: game.slug }) }}" role="button" class="secondary">Randomiser</a>
+            <a href="{{ path('admin_sort_date', { game: game.slug }) }}" role="button" class="secondary">Par date</a>
+            <a href="{{ path('admin_normalize', { game: game.slug }) }}" role="button" class="secondary">Normalizer</a>
+            <a href="{{ path('admin_edit', { game: game.slug }) }}" role="button" >Modifier</a>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        {%- for index, screenshot in game.images -%}
+        <article class="screenshot" id="{{ screenshot.slug }}">
+            {% include 'admin/image.html.twig' with { image: screenshot, lazy: loop.index > 1 } only %}
+            <aside>
+                <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'up', step: 5 }) }}" role="button" class="secondary">⇡</a>
+                <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'up' }) }}" role="button" class="secondary">↑</a>
+                <a href="{{ path('admin_delete', { screenshot: screenshot.path }) }}" role="button" class="secondary">✕</a>
+                <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'down' }) }}" role="button" class="secondary">↓</a>
+                <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'down', step: 5 }) }}" role="button" class="secondary">⇣</a>
+            </aside>
+            <footer>
+                <small>
+                    <a href="#{{ screenshot.slug }}" class="secondary">
+                        {{ screenshot.slug }}
+                    </a>
+                </small>
+                <small>{{ screenshot.date|date('j F Y H:i') }}</small>
+                <label>
+                    <input
+                        class="spoil-switch"
+                        name="{{ screenshot.slug }}"
+                        type="checkbox"
+                        role="switch"
+                        {{ screenshot.spoil ? 'checked' : '' }}
+                        data-action="{{ path('admin_spoil', { screenshot: screenshot.path, spoil: screenshot.spoil ? 0 : 1 }) }}"
+                    />
+                    Spoil
+                </label>
+            </footer>
+        </article>
+        {%- endfor -%}
+    </section>
+{% endblock %}

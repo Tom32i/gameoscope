@@ -39,7 +39,7 @@ Encore
      */
     .cleanupOutputBeforeBuild()
     //.enableBuildNotifications()
-    .enableSourceMaps(!Encore.isProduction())
+    .enableSourceMaps(Encore.isDev())
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
@@ -71,5 +71,11 @@ Encore
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
 ;
+
+if (Encore.isDev()) {
+    Encore
+        .addEntry('admin', './assets/admin/js/app.js')
+        .addStyleEntry('admin_style', './assets/admin/css/app.scss')
+}
 
 module.exports = Encore.getWebpackConfig();

@@ -1,7 +1,10 @@
 twig:
     file_name_pattern: '*.twig'
+    form_themes: ['form/theme.html.twig']
+    date:
+        timezone: "Europe/Paris"
     globals:
-      google_analytics_token: "%env(GOOGLE_ANALYTICS_TOKEN)%"
+        google_analytics_token: "%env(GOOGLE_ANALYTICS_TOKEN)%"
 
 when@test:
     twig:

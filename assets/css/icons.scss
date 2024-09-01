@@ -1,12 +1,12 @@
 @font-face {
+  font-display: block;
   font-family: '#{$icomoon-font-family}';
+  font-style: normal;
+  font-weight: normal;
   src:
     url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?ge9w6x') format('truetype'),
     url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?ge9w6x') format('woff'),
     url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?ge9w6x##{$icomoon-font-family}') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
 }
 
 [class^='icon-']::before,
@@ -16,20 +16,24 @@
   display: inline-block;
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: '#{$icomoon-font-family}' !important;
-  speak: never;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: never;
+  text-transform: none;
 }
 
 .icon-top::before {
   content: $icon-top;
+}
+
+.icon-eye::before {
+  content: $icon-eye;
 }
 
 .icon-download::before,

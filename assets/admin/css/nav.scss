@@ -1,0 +1,12 @@
+header.container .nav {
+    display: flex;
+    align-items: center;
+
+    > * {
+        margin: 0 var(--pico-spacing);
+    }
+
+    > *:last-child {
+        margin-right: 0;
+    }
+}

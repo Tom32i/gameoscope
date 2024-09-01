@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body_class '' %}
+
+{% block content %}
+    <table class="games">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Jeu</th>
+                <th>Screenshots</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game in games %}
+                <tr onclick="location.href='{{ path('admin_show', { game: game.slug }) }}';">
+                    <td class="thumbnail">
+                        {% if game.cover %}
+                            {% include 'admin/image.html.twig' with { image: game.images|first, lazy: loop.index > 1 } only %}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <strong>{{ game.name|default(game.slug) }}</strong>
+                    </td>
+                    <td>
+                        <kbd>{{ game.images|length }}</kbd>
+                    </td>
+                    <td class="actions">
+                        <div role="group">
+                        <a role="button" class="secondary" href="{{ path('admin_show', { game: game.slug }) }}">
+                            Voir
+                        </a>
+                        <a role="button" href="{{ path('admin_edit', { game: game.slug }) }}">
+                            Modifier
+                        </a>
+                    </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

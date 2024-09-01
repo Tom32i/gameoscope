@@ -4,6 +4,11 @@ A handmade collection of beautiful screenshots from my favorite videogames.
 
 ## Setup
 
+**Prerequisites**
+
+    brew install pkg-config imagemagick
+    pecl install imagick
+
 Install dependencies and setup games folder:
 
     make setup

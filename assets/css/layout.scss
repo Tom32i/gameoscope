@@ -188,15 +188,23 @@ a:visited {
   }
 }
 
-.top {
-  position: fixed;
-  font-size: 1.4em;
-  right: 1em;
+.side-bar {
+  align-items: center;
   bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  right: 1em;
   z-index: 100;
-  opacity: 0.4;
 
-  &:hover {
-    opacity: 1;
+  .item {
+    display: block;
+    font-size: 1.4em;
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }

@@ -1,0 +1,13 @@
+html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    max-width: 960px;
+}
+
+[role="button"] {
+    padding: 0.2em 0.6em;
+}

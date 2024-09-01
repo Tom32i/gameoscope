@@ -31,7 +31,7 @@ setup: install games
 ## Install application
 install:
 	# Composer
-	composer install --verbose
+	composer install --verbose --ignore-platform-req=ext-imagick
 	# Npm install
 	npm install
 
@@ -61,6 +61,14 @@ games:
 start:
 	symfony server:start --no-tls
 
+## Run application
+admin: export APP_ENV = dev
+admin: export APP_DEBUG = 0
+admin: build-assets@dev
+	bin/console c:c
+	open http://127.0.0.1:8000/admin/
+	symfony server:start --no-tls
+
 ## Serve build
 serve:
 	php -S 0.0.0.0:8001 -t build
@@ -76,12 +84,17 @@ watch:
 ## Build application
 build: build-assets cache build-content optimize
 
+build-assets@dev:
+	npx encore dev
+
 build-assets:
 	npx encore production
 
 build-content: export APP_ENV = prod
+build-content: export APP_DEBUG = false
 build-content:
 	symfony console cache:clear
+	bin/console cache:clear
 	bin/console stenope:build
 
 build@staging: build
@@ -92,10 +105,12 @@ optimize:
 
 cache: export APP_ENV = prod
 cache:
+	bin/console cache:clear
 	bin/console showcase:cache-generate
 
 clear-cache: export APP_ENV = prod
 clear-cache:
+	bin/console cache:clear
 	bin/console showcase:cache-clear
 
 ############
