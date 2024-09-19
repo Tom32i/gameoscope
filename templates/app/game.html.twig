@@ -18,12 +18,15 @@
             {{ block('studio') }} | <span class="game-year">{{ game.year }}</span>
         </h3>
     </div>
-    <a href="#top" class="top with-icon icon-top"></a>
+    <div class="side-bar">
+        <a href="#spoil" class="item icon-eye" id="toggle-spoil"></a>
+        <a href="#top" class="item icon-top"></a>
+    </div>
 {% endblock %}
 
 {% block content %}
     {%- for index, image in game.images -%}
-        <a id="screenshot-{{ index }}" class="screenshot" href="{{ download(image.path) }}" download>
+        <a id="screenshot-{{ index }}" class="screenshot {{image.spoil ? 'spoil' : ''}}" href="{{ download(image.path) }}" download>
             {% include 'app/image.html.twig' with { image: image, lazy: loop.index > 1 } only %}
         </a>
     {%- endfor -%}

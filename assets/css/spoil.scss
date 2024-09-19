@@ -1,0 +1,20 @@
+.content:not(.show-spoilers) {
+  .spoil {
+    picture {
+      filter: blur(24px);
+    }
+
+    &::before {
+      content: $icon-eye;
+      font-family: '#{$icomoon-font-family}' !important;
+      opacity: 0.5;
+    }
+
+    &:hover,
+    &:active {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+}

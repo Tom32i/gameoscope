@@ -41,11 +41,13 @@
   }
 
   .screenshot {
+    background-color: #000;
     box-shadow: 0 1em 3em rgba(#000, 0.66);
     display: block;
     line-height: 0;
     margin: 3em 0;
     outline: none;
+    overflow: hidden;
     position: relative;
     scroll-margin-top: 3em;
 
@@ -81,6 +83,7 @@
       top: 50%;
       transform: translate3d(-50%, -50%, 0);
       transition: opacity 200ms linear;
+      z-index: 10;
     }
 
     &:hover,

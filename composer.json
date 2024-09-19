@@ -5,6 +5,7 @@
         "php": "^8.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-imagick": "*",
         "phpdocumentor/reflection-docblock": "^5.2",
         "stenope/stenope": "^0.9",
         "symfony/asset": "^7.0",
@@ -28,12 +29,12 @@
         "symfony/twig-bundle": "^7.0",
         "symfony/web-link": "^7.0",
         "symfony/yaml": "^7.0",
-        "tom32i/showcase-bundle": "^1.2",
+        "tom32i/showcase-bundle": "^1.4",
         "twig/extra-bundle": "^3.4",
         "twig/twig": "^3.4"
     },
     "require-dev": {
-        "ekino/phpstan-banned-code": "^1.0",
+        "ekino/phpstan-banned-code": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.10",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan": "^1.8",

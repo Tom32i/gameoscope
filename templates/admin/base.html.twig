@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}"  data-theme="dark">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <title>{% block meta_title 'Game-o-scope | Gestion' %}</title>
+        <meta name="title" content="{{ block('meta_title') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('admin_style') }}
+        {% endblock %}
+    </head>
+    <body class="{% block body_class '' %}">
+        {% block body %}
+            <header class="container">
+                {{ include("admin/nav.html.twig") }}
+            </header>
+            <main class="container">
+                {% block content %}{% endblock %}
+            </main>
+            <footer>{% block footer_content '' %}</footer>
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('admin') }}
+        {% endblock %}
+    </body>
+</html>

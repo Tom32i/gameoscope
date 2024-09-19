@@ -1,11 +1,11 @@
 <picture>
-    <source srcset="{{ image(image.path, 'mobileWP') }}, {{ image(image.path, 'mobileX2WP') }} 2x" media="(max-width: 768px)" type="image/webp">
-    <source srcset="{{ image(image.path, 'mobile') }}, {{ image(image.path, 'mobileX2') }} 2x" media="(max-width: 768px)">
-    <source srcset="{{ image(image.path, 'smallWP') }}, {{ image(image.path, 'smallX2WP') }} 2x" media="(max-width: 1440px)" type="image/webp">
-    <source srcset="{{ image(image.path, 'small') }}, {{ image(image.path, 'smallX2') }} 2x" media="(max-width: 1440px)">
-    <source srcset="{{ image(image.path, 'mediumWP') }}" media="(max-width: 2160px)" type="image/webp">
-    <source srcset="{{ image(image.path, 'medium') }}" media="(max-width: 2160px)">
-    <source srcset="{{ image(image.path, 'largeWP') }}" media="(min-width: 2161px)" type="image/webp">
-    <source srcset="{{ image(image.path, 'large') }}" media="(min-width: 2161px)">
+    <source srcset="{{ image(image.path, 'mobileWP') }}, {{ image(image.path, 'mobileX2WP') }}" width="656" height="369" media="(max-width: 768px)" type="image/webp">
+    <source srcset="{{ image(image.path, 'mobile') }}, {{ image(image.path, 'mobileX2') }} 2x" width="656" height="369" media="(max-width: 768px)">
+    {# <source srcset="{{ image(image.path, 'smallWP') }}, {{ image(image.path, 'smallX2WP') }} 2x" width="960" height="540" media="(max-width: 1440px)" type="image/webp"> #}
+    <source srcset="{{ image(image.path, 'small') }}, {{ image(image.path, 'smallX2') }} 2x" width="960" height="540" media="(max-width: 1440px)">
+    {# <source srcset="{{ image(image.path, 'mediumWP') }}, {{ image(image.path, 'mediumX2WP') }} 2x" media="(max-width: 2160px)" width="1280" height="720"type="image/webp"> #}
+    <source srcset="{{ image(image.path, 'medium') }}, {{ image(image.path, 'mediumX2') }} 2x" media="(max-width: 2160px)" width="1280" height="720">
+    {# <source srcset="{{ image(image.path, 'largeWP') }}" media="(min-width: 2160px)" width="1920" height="1080" type="image/webp"> #}
+    <source srcset="{{ image(image.path, 'large') }}" media="(min-width: 2160px)" width="1920" height="1080">
     <img title="{{ image.slug }}" src="{{ image(image.path, 'mobile') }}" {% if lazy %}loading="lazy"{% endif %} />
 </picture>

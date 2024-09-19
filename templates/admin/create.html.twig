@@ -1,0 +1,23 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block content %}
+    <h2>Nouveau jeu</h2>
+    <article>
+        {{ form_start(form) }}
+            <fieldset class="grid">
+                {{ form_row(form.name) }}
+                {{ form_row(form.slug) }}
+            </fieldset>
+            <fieldset class="grid">
+                {{ form_row(form.studio.name) }}
+                {{ form_row(form.studio.url) }}
+            {{ form_row(form.year) }}
+            </fieldset>
+            <fieldset>
+            {{ form_row(form.date) }}
+            {{ form_row(form.draft) }}
+            </fieldset>
+            <hr>
+        {{ form_end(form) }}
+    </article>
+{% endblock %}

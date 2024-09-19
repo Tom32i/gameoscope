@@ -1,0 +1,28 @@
+table.games {
+    tr:hover td {
+        background-color: var(--pico-table-row-stripped-background-color);
+    }
+
+    td {
+        border-width: 0;
+        border-color: transparent;
+    }
+
+    td.thumbnail {
+        padding: 0;
+
+        img {
+            max-height: 4em;
+        }
+    }
+
+    td.actions {
+        white-space: nowrap;
+
+        [role="group"] {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
