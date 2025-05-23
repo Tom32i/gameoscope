@@ -61,7 +61,7 @@ class GameCommand extends Command
             $slug,
             $name,
             $year,
-            $date,
+            new \DateTimeImmutable($date),
             [
                 'name' => $studioName,
                 'url' => $studioUrl,
