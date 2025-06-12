@@ -25,11 +25,13 @@
         <article class="screenshot" id="{{ screenshot.slug }}">
             {% include 'admin/image.html.twig' with { image: screenshot, lazy: loop.index > 1 } only %}
             <aside>
+                <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'top' }) }}" role="button" class="secondary">⇤</a>
                 <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'up', step: 5 }) }}" role="button" class="secondary">⇡</a>
                 <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'up' }) }}" role="button" class="secondary">↑</a>
                 <a href="{{ path('admin_delete', { screenshot: screenshot.path }) }}" role="button" class="secondary">✕</a>
                 <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'down' }) }}" role="button" class="secondary">↓</a>
                 <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'down', step: 5 }) }}" role="button" class="secondary">⇣</a>
+                <a href="{{ path('admin_move', { screenshot: screenshot.path, direction: 'bottom' }) }}" role="button" class="secondary">⇥</a>
             </aside>
             <footer>
                 <small>

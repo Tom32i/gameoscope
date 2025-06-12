@@ -46,9 +46,30 @@ class Screenshot extends Image
         return $this->group;
     }
 
-    public function move(int $step): bool
+    public function move(string $direction, int $step = 1): bool
     {
-        return $this->group->move($this, $step);
+        return match ($direction) {
+            'up' => $this->moveBy(-$step),
+            'down' => $this->moveBy($step),
+            'top' => $this->moveTop(),
+            'bottom' => $this->moveBottom(),
+            default => throw new \InvalidArgumentException("Unknown direction '$direction'."),
+        };
+    }
+
+    public function moveBy(int $step): bool
+    {
+        return $this->group->moveBy($this, $step);
+    }
+
+    public function moveTop(): bool
+    {
+        return $this->group->moveTop($this);
+    }
+
+    public function moveBottom(): bool
+    {
+        return $this->group->moveBottom($this);
     }
 
     public function compareDate(self $image): int

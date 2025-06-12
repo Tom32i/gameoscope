@@ -118,7 +118,41 @@ class Game extends Group
         $this->config['date'] = $date->format('Y-m-d');
     }
 
-    public function move(Screenshot $screenshot, int $step): bool
+    public function moveBy(Screenshot $screenshot, int $step): bool
+    {
+        $index = $this->getIndex($screenshot);
+        $insertAt = max(0, $index + $step);
+
+        if ($step > 0) {
+            ++$insertAt;
+        }
+
+        return $this->move($index, $insertAt);
+    }
+
+    public function moveTop(Screenshot $screenshot): bool
+    {
+        return $this->move($this->getIndex($screenshot), 0);
+    }
+
+    public function moveBottom(Screenshot $screenshot): bool
+    {
+        return $this->move($this->getIndex($screenshot), \count($this->images));
+    }
+
+    private function move(int $from, int $to): bool
+    {
+        $images = $this->images;
+        $screenshot = $images[$from];
+        $images[$from] = null;
+        array_splice($images, $to, 0, [$screenshot]);
+
+        $this->images = array_values(array_filter($images));
+
+        return true;
+    }
+
+    private function getIndex(Screenshot $screenshot): int
     {
         $index = array_search($screenshot, $this->images, true);
 
@@ -126,19 +160,7 @@ class Game extends Group
             throw new \LogicException('Screenshot not found');
         }
 
-        $insertAt = max(0, $index + $step);
-
-        if ($step > 0) {
-            ++$insertAt;
-        }
-
-        $images = $this->images;
-        $images[$index] = null;
-        array_splice($images, $insertAt, 0, [$screenshot]);
-
-        $this->images = array_values(array_filter($images));
-
-        return true;
+        return $index;
     }
 
     public function remove(Screenshot $screenshot): void

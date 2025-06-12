@@ -122,12 +122,12 @@ class AdminController extends AbstractController
 
     #[Route('/{screenshot}/move/{direction}/{step}', name: 'move', requirements: [
         'screenshot' => '.+\/.+',
-        'direction' => 'up|down',
+        'direction' => 'up|down|top|bottom',
         'step' => '\d*',
     ])]
     public function move(#[LoadOption(LoadOption::DISABLED)] Screenshot $screenshot, string $direction, int $step = 1): Response
     {
-        if ($screenshot->move($direction === 'up' ? -$step : $step)) {
+        if ($screenshot->move($direction, $step)) {
             $this->normalizer->normalize($screenshot->getGame());
         }
 

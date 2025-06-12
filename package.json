@@ -5,9 +5,9 @@
         "reset-css": "^5.0.1"
     },
     "devDependencies": {
-        "@picocss/pico": "^2.0.6",
         "@babel/core": "^7.17.0",
         "@babel/preset-env": "^7.16.0",
+        "@picocss/pico": "^2.0.6",
         "@symfony/webpack-encore": "^4.0.0",
         "autoprefixer": "^10.2.6",
         "babel-eslint": "^10.1.0",
