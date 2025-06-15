@@ -5,14 +5,8 @@ when@dev:
 
     framework:
         profiler:
-            collect: "%kernel.debug%"
-            only_exceptions: false
             collect_serializer_data: "%kernel.debug%"
 
 when@test:
-    web_profiler:
-        toolbar: false
-        intercept_redirects: false
-
     framework:
         profiler: { collect: false }
