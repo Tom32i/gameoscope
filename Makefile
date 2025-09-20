@@ -180,3 +180,6 @@ cache-regenerate: cache-clear cache-generate
 
 normalize:
 	bin/console showcase:normalize-names
+
+open:
+	open /Volumes/Screenshot
