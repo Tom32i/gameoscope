@@ -33,6 +33,11 @@ class Game extends Group
         return $game;
     }
 
+    public function is(self $game)
+    {
+        return $game->getSlug() === $this->slug;
+    }
+
     public function getCover(): ?Screenshot
     {
         $images = array_filter($this->images, fn (Screenshot $image): bool => !$image->isSpoil());

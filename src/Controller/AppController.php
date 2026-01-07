@@ -44,7 +44,7 @@ class AppController extends AbstractController
         }
 
         $games = $this->listGames(LoadOption::disabled(...));
-        $index = (int) array_search($game, $games, true);
+        $index = (int) array_find_key($games, fn (Game $item) => $item->is($game));
         $next = isset($games[$index + 1]) ? $games[$index + 1] : $games[0];
         $previous = isset($games[$index - 1]) ? $games[$index - 1] : $games[\count($games) - 1];
 
