@@ -5,6 +5,7 @@ twig:
         timezone: "Europe/Paris"
     globals:
         google_analytics_token: "%env(GOOGLE_ANALYTICS_TOKEN)%"
+        plausible_link: "https://analytics.tom32i.fr/js/%env(PLAUSIBLE_TAG)%"
 
 when@test:
     twig:

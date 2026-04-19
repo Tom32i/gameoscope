@@ -57,6 +57,11 @@
                   gtag('config', '{{ google_analytics_token }}', { anonymize_ip: true });
                 </script>
             {% endif %}
+            {% if plausible_link %}
+                <!-- Privacy-friendly analytics by Plausible -->
+                <script async src="{{plausible_link}}"></script>
+                <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+            {% endif %}
         {% endblock %}
     </head>
     <body class="{% block body_class '' %}">
