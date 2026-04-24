@@ -4,7 +4,7 @@ twig:
     date:
         timezone: "Europe/Paris"
     globals:
-        google_analytics_token: "%env(GOOGLE_ANALYTICS_TOKEN)%"
+        umami_id: "%env(APP_UMAMI_ID)%"
 
 when@test:
     twig:

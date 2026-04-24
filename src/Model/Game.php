@@ -33,7 +33,7 @@ class Game extends Group
         return $game;
     }
 
-    public function is(self $game)
+    public function is(self $game): bool
     {
         return $game->getSlug() === $this->slug;
     }
