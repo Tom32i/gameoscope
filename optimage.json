@@ -1,6 +1,7 @@
 {
   "path": "build/**/*.@(png|jpg|jpeg)",
   "ignore": "build/download/**/*",
+  "cacheDir": "var/optimage-cache",
   "cache": {
     "memory":  2048
   },

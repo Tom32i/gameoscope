@@ -5,6 +5,7 @@ $finder = (new PhpCsFixer\Finder())
     ->exclude('var')
     ->exclude('node_modules')
     ->exclude('build')
+    ->notPath('config/reference.php')
 ;
 
 return (new PhpCsFixer\Config())
