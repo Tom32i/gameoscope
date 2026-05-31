@@ -154,12 +154,12 @@ lint-stylelint:
 ##########
 
 ## Build and deploy to staging
-deploy@staging: build
-	rsync -arzv --delete build/* tom32i@deployer.vm:/home/tom32i/gameoscope/
+deploy@staging:
+	rsync -arzv --mkpath --delete-after build/* tom32i@deployer.vm:/home/tom32i/gameoscope/
 
 ## Build and deploy to production
-deploy@production: build
-	rsync -arzv --delete build/* tom32i@tom32i.fr:/home/tom32i/gameoscope/
+deploy@production:
+	rsync -arzv --mkpath --delete-after build/* tom32i@gameoscope.fr:/home/tom32i/gameoscope/
 
 ##########
 # Custom #
