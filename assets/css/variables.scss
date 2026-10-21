@@ -1,18 +1,21 @@
+@use 'sass:color';
+@use 'sass:string';
+
 $background: #1e2329;
 
 $color-text-dark: #fff;
-$color-text: darken($color-text-dark, 15%);
-$color-text-light: darken($color-text, 30%);
+$color-text: color.adjust($color-text-dark, $lightness: -15%);
+$color-text-light: color.adjust($color-text, $lightness: -30%);
 
 // Icons
 $icomoon-font-family: 'icons' !default;
 $icomoon-font-path: '../fonts' !default;
 
-$icon-top: unquote('"\\e901"');
-$icon-eye: unquote('"\\e904"');
-$icon-download: unquote('"\\e900"');
-$icon-info: unquote('"\\ea0c"');
-$icon-instagram: unquote('"\\ea92"');
-$icon-twitter: unquote('"\\ea96"');
-$icon-next: unquote('"\\e902"');
-$icon-previous: unquote('"\\e903"');
+$icon-top: string.unquote('"\\e901"');
+$icon-eye: string.unquote('"\\e904"');
+$icon-download: string.unquote('"\\e900"');
+$icon-info: string.unquote('"\\ea0c"');
+$icon-instagram: string.unquote('"\\ea92"');
+$icon-twitter: string.unquote('"\\ea96"');
+$icon-next: string.unquote('"\\e902"');
+$icon-previous: string.unquote('"\\e903"');

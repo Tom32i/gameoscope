@@ -19,8 +19,8 @@
         "postcss-loader": "^8.1.0",
         "sass": "^1.55.0",
         "sass-loader": "^16.0.0",
-        "stylelint": "^14.13.0",
-        "stylelint-config-sass-guidelines": "^9.0.0",
+        "stylelint": "^17.16.0",
+        "stylelint-config-sass-guidelines": "^13.0.0",
         "webpack": "^5.74.0",
         "webpack-cli": "^6.0.0"
     },
