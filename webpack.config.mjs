@@ -48,7 +48,7 @@ Encore
 
     // configure Babel: core-js polyfills
     .configureBabel((config) => {
-        config.plugins.push(['polyfill-corejs3', { method: 'usage-global', version: '3.38' }]);
+        config.plugins.push(['polyfill-corejs3', { method: 'usage-global', version: '3.49' }]);
     })
 
     // minify CSS in production
