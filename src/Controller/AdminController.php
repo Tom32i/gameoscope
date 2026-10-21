@@ -56,7 +56,9 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $game = $this->gameRepository->create($form->getData());
+            $game = $this->gameRepository->create(
+                $form->getData() ?? throw new \LogicException('The game form has no data.')
+            );
 
             return $this->redirectToRoute('admin_show', ['game' => $game->getSlug()]);
         }
