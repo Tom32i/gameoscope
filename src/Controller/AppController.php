@@ -8,7 +8,7 @@ use App\Model\Game;
 use App\Model\Screenshot;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Tom32i\ShowcaseBundle\Service\Browser;
 use Tom32i\ShowcaseBundle\ValueResolver\Attribute\LoadOption;
 

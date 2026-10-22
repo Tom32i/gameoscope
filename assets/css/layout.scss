@@ -1,8 +1,10 @@
+@use 'sass:color';
+
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;900&display=swap');
 
 body {
   align-items: center;
-  background: url('../img/noise.png'), linear-gradient(125deg, lighten($background, 5%), darken($background, 5%));
+  background: url('../img/noise.png'), linear-gradient(125deg, color.adjust($background, $lightness: 5%), color.adjust($background, $lightness: -5%));
   background-attachment: scroll, fixed;
   color: $color-text;
   display: flex;

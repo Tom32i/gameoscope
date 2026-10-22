@@ -12,7 +12,7 @@ use App\Service\ScreenshotRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Tom32i\ShowcaseBundle\Service\Browser;
 use Tom32i\ShowcaseBundle\Service\Normalizer;
 use Tom32i\ShowcaseBundle\ValueResolver\Attribute\LoadOption;
@@ -56,7 +56,9 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $game = $this->gameRepository->create($form->getData());
+            $game = $this->gameRepository->create(
+                $form->getData() ?? throw new \LogicException('The game form has no data.')
+            );
 
             return $this->redirectToRoute('admin_show', ['game' => $game->getSlug()]);
         }
