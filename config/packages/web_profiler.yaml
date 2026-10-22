@@ -1,14 +1,11 @@
 when@dev:
     web_profiler:
-        toolbar: "%kernel.debug%"
-        intercept_redirects: "%kernel.debug%"
+        toolbar: true
 
     framework:
-        profiler:
-            collect_serializer_data: "%kernel.debug%"
+        profiler: true
 
 when@test:
     framework:
         profiler:
             collect: false
-            collect_serializer_data: true
