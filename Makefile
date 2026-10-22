@@ -134,7 +134,7 @@ lint-phpcsfixer:
 	vendor/bin/php-cs-fixer fix
 
 lint-phpstan:
-	vendor/bin/phpstan analyse src
+	vendor/bin/phpstan analyse
 
 lint-twig:
 	bin/console lint:twig templates

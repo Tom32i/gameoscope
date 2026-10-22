@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
-foreach (glob(\dirname(__DIR__) . '/var/cache/prod/*.preload.php') ?: [] as $file) {
+$files = glob(\dirname(__DIR__) . '/var/cache/prod/*.preload.php');
+
+foreach (false !== $files ? $files : [] as $file) {
     require $file;
 }
