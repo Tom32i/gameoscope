@@ -82,7 +82,7 @@ watch:
 	npx encore dev --watch
 
 ## Build application
-build: build-assets cache build-content optimize
+build: build-assets cache optimize build-content
 
 build-assets@dev:
 	npx encore dev
