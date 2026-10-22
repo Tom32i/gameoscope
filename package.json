@@ -17,7 +17,7 @@
         "core-js": "^3.49.0",
         "cssnano": "^9.9.0",
         "eslint": "^8.23.0",
-        "optimage-cli": "^0.2.0",
+        "optimage-cli": "^0.3.0",
         "postcss": "^8.5.29",
         "postcss-loader": "^8.1.1",
         "sass": "^1.55.0",
