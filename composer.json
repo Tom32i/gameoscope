@@ -30,7 +30,7 @@
         "symfony/web-link": "^8.1",
         "symfony/webpack-encore-bundle": "^2.1",
         "symfony/yaml": "^8.1",
-        "tom32i/showcase-bundle": "^1.5",
+        "tom32i/showcase-bundle": "^1.6",
         "twig/extra-bundle": "^3.29",
         "twig/twig": "^3.30"
     },
