@@ -1,7 +1,8 @@
 import Encore from '@symfony/webpack-encore';
+import coreJs from 'core-js/package.json' with { type: 'json' };
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
-// It's useful when you use tools that rely on webpack.config.js file.
+// It's useful when you use tools that rely on webpack.config.mjs file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
@@ -48,7 +49,7 @@ Encore
 
     // configure Babel: core-js polyfills
     .configureBabel((config) => {
-        config.plugins.push(['polyfill-corejs3', { method: 'usage-global', version: '3.49' }]);
+        config.plugins.push(['polyfill-corejs3', { method: 'usage-global', version: coreJs.version }]);
     })
 
     // minify CSS in production
