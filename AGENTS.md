@@ -1,108 +1,74 @@
 # AGENTS.md
 
-This is a Symfony project. Check `composer.json` for the exact Symfony/PHP version
-in use, and read `symfony.lock` to see which recipes ran. Don't assume Doctrine,
-Twig, API Platform, Messenger, or Lock are installed unless one of those says so.
+Gameoscope is a handmade collection of video game screenshots, built as a static
+site. Symfony renders the pages, Stenope crawls them into `build/`, and the
+result is rsynced to the server. There is no database: games and screenshots are
+files on disk. The site's content is in French.
 
-## Ask before generating
+Check `composer.json` and `package.json` for exact versions (Symfony 8.1, PHP 8.5,
+Webpack Encore 7). The build needs the Node versions declared in `engines`.
 
-If the task doesn't specify, ask rather than guess:
+## How it fits together
 
-- Persistence: Doctrine ORM, Doctrine ODM, or none?
-- Interface: server-rendered (Twig), API (Serializer, maybe API Platform), or both?
-- Auth: SecurityBundle, and which authenticator?
+- `games/` is a separate git repository (`make games` clones it), ignored here.
+  Each game is a folder named after its slug, with `info.json` (name, release
+  `year`, publication `date`, `studio`, `draft`) and its screenshots. Never
+  commit or rewrite anything in `games/` unless asked.
+- `tom32i/showcase-bundle` (configured in `config/packages/tom32i_showcase.yaml`)
+  browses `games/`, maps folders to `App\Model\Game` and images to
+  `App\Model\Screenshot`, and serves resized images through Glide presets at
+  `/image/{preset}/{path}`. Screenshot flags such as `spoil` are stored in the
+  image files' own properties through Imagick, which is why `ext-imagick` is
+  required.
+- `AppController` renders the public pages: game list, game page, about page.
+  Draft games are hidden in `prod` only.
+- `AdminController` (`/admin`) edits games and screenshots. It only exists
+  outside `prod` and is excluded from the Stenope build. `make admin` runs it in
+  dev with `APP_DEBUG=0`.
+- `stenope/stenope` turns the prod app into static HTML: `bin/console stenope:build`
+  writes `build/`, including every image preset.
 
-If you can't ask (no interactive channel), state the assumption you're making and
-pick the smallest option (e.g. no persistence layer) rather than scaffolding a
-full stack nobody asked for.
+## Commands
 
-## Adding features: Flex, not hand-wiring
+- `make start` (Symfony server on :8000) and `make watch` (Encore) for development.
+- `make game` creates a new game interactively. It prompts, so don't run it in a
+  non-interactive shell. Write `games/<slug>/info.json` yourself instead.
+- `make lint` runs PHP CS Fixer, PHPStan (level 8 with strict rules, on `bin/`,
+  `config/`, `public/` and `src/`), the Twig and YAML lints, ESLint and
+  stylelint. PHP CS Fixer, ESLint and stylelint fix what they can in place.
+  Run it before committing.
+- `bin/console lint:container` checks service wiring.
+- There is no test suite. Verify changes by rendering the pages, or with a build.
 
-Install new capabilities with `composer require <package>` (e.g. `symfony/lock`,
-`symfony/messenger`, `orm-pack`) and let the Flex recipe register the bundle and
-generate its config. Don't hand-edit `config/bundles.php` or hand-write a bundle's
-base config; that's what the recipe is for. Don't skip a good-fit component just
-because it isn't installed yet; installing it is one command.
+## Building
 
-## Conventions
+`make build` compiles assets, generates the image cache, runs `stenope:build`
+and optimizes the images with optimage. A full build takes over an hour and
+writes about 13 GB to `build/` (plus the Glide cache in `var/cache/games`), so:
 
-Follow https://symfony.com/doc/current/best_practices.html to write idiomatic
-Symfony:
+- Don't start a full build casually. Check free disk space first, and run long
+  builds in the background.
+- To check a change, render the affected pages with `make start` instead.
+- `make deploy@*` rsyncs `build/` to a server. Only run it when explicitly asked.
 
-- Use PHP attributes for framework metadata, and not only on controllers:
-  `#[Route]`, `#[MapRequestPayload]`, `#[IsGranted]` on actions, `#[Assert\...]`
-  on properties, `#[AsCommand]`, `#[AsEventListener]`, `#[AsMessageHandler]`, and
-  `#[AsAlias]` / `#[AsTaggedItem]` / `#[Autoconfigure]` on services. No YAML or
-  XML routing.
-- Rely on autowiring and autoconfiguration. Type-hint constructor arguments and
-  let the container resolve them. Where a type-hint can't express it, stay in the
-  class with `#[Autowire]` (parameters, env vars, expressions) or `#[Target]` (one
-  of several implementations of an interface). A YAML service definition is the
-  last resort, not the first.
-- Controllers extend `AbstractController`, stay thin, and delegate to services.
-- Use the framework for what it already does: Form for server-rendered forms,
-  Validator for validation, Serializer for JSON, Messenger for async work,
-  Security (voters, authenticators) for access control, Twig `path()`/`url()`
-  instead of hardcoded URLs.
-- Before hand-writing infrastructure (locks, queues, caches, HTTP clients,
-  mailers, schedulers) or reaching for a third-party library, check whether a
-  Symfony component covers it. It usually does.
+## Code conventions
 
-Three specifics worth spelling out, because they are easy to get wrong:
+- Follow the existing code: constructor property promotion, `#[Route]` and
+  `#[AsCommand]` attributes, autowired services, thin controllers.
+- Import `Route` from `Symfony\Component\Routing\Attribute` (the `Annotation`
+  namespace no longer exists in Symfony 8).
+- PHP CS Fixer uses the `@Symfony` ruleset plus the project rules in
+  `.php-cs-fixer.dist.php` (strict types, `concat_space: one`, no Yoda style).
+- PHPStan rules forbid short ternaries (`?:`) and non-boolean conditions. Don't
+  silence errors with `@phpstan-ignore` or baseline entries, fix the cause.
+- Stylesheets use Sass modules (`sass:color`, `sass:string`) rather than the
+  global functions, which stylelint forbids.
+- Install Symfony packages with `composer require` and let the Flex recipes
+  generate their config. `config/reference.php` is generated: don't edit or
+  commit it.
 
-- Bind request data with `#[MapRequestPayload]` / `#[MapQueryString]` on action
-  arguments, which wires up Serializer and Validator for you, instead of calling
-  `json_decode()` or `SerializerInterface` by hand. If neither package is
-  installed yet, `composer require` them rather than falling back to manual
-  parsing.
-- Use constructor property promotion, and `readonly` for DTOs and value objects.
-  Don't mark a service `readonly` if it might become `lazy: true`: a lazy proxy
-  can't extend a `readonly` class.
-- Use `symfony/lock` (`LockFactory`) for mutual exclusion. A hand-built flag or
-  lock file looks fine in review and is usually wrong under concurrency.
+## Related repositories
 
-## Everyday workflow
-
-- Run the app with `symfony serve -d`, and commands with `symfony console ...`
-  (or `bin/console` when the Symfony CLI isn't available).
-- When something fails, read `var/log/dev.log` and the web profiler
-  (`/_profiler`) before changing code.
-- If `maker-bundle` is installed, prefer `bin/console make:*` with every argument
-  passed up front and `--no-interaction` where supported: makers prompt on a
-  terminal by default, which hangs a non-interactive shell. If a maker still
-  needs interactive input, hand-write the code instead.
-- If Doctrine ORM is installed, schema changes go through migrations
-  (`bin/console make:migration`, then `doctrine:migrations:migrate`), never
-  `doctrine:schema:update` or hand-written SQL.
-- `.env` is committed and holds defaults only. Real secrets belong in `.env.local`
-  (git-ignored) or the secrets vault (`bin/console secrets:set`), read via
-  `%env(...)%`.
-
-## Testing
-
-Install `symfony/test-pack` if it isn't already. Functional/HTTP tests extend
-`WebTestCase`; service-level tests extend `KernelTestCase`. Run
-`php bin/phpunit` (falls back to `vendor/bin/phpunit`). A feature isn't done
-until it has a test that exercises it the way a caller would, an HTTP request for
-a controller or a service call for a service, not just "it didn't throw."
-
-## Code style
-
-Symfony's coding standard, the `@Symfony` php-cs-fixer ruleset (a PSR-12-derived
-superset). Run `vendor/bin/php-cs-fixer fix` if `friendsofphp/php-cs-fixer` is
-installed; it isn't part of the skeleton by default.
-
-## Discover, don't guess
-
-Framework APIs change between versions and your training data may be stale. Look
-things up in the project instead of relying on memory:
-
-- `bin/console about`: versions, environment, paths.
-- `bin/console debug:router`, `debug:container`, `debug:autowiring <name>`,
-  `debug:config <bundle>`, `config:dump-reference <bundle>`: what exists and how
-  it is configured.
-- `bin/console lint:container`, plus `lint:twig templates/` and
-  `lint:yaml config/` where those packages are installed: validate before running.
-- Read the installed source and docblocks under `vendor/`.
-- Docs: https://symfony.com/doc/current/ (switch to the version matching
-  `composer.json` if it differs).
+The bundles live in `~/Sites/opensource/` (`ShowcaseBundle`, `Stenope`,
+`optimage`) and are maintained by the same author. When a fix belongs in one of
+them, change it there and release it, rather than patching around it here.
