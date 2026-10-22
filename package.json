@@ -1,6 +1,9 @@
 {
     "license": "UNLICENSED",
     "private": true,
+    "engines": {
+        "node": "^22.22.3 || ^24.15.0 || >=26.0"
+    },
     "dependencies": {
         "reset-css": "^5.0.1"
     },
@@ -10,19 +13,18 @@
         "@picocss/pico": "^2.0.6",
         "@symfony/webpack-encore": "^7.2.0",
         "autoprefixer": "^10.2.6",
-        "babel-eslint": "^10.1.0",
         "babel-plugin-polyfill-corejs3": "^1.0.0",
         "core-js": "^3.49.0",
         "cssnano": "^9.9.0",
         "eslint": "^8.23.0",
         "optimage-cli": "^0.2.0",
-        "postcss": "^8.4.16",
-        "postcss-loader": "^8.1.0",
+        "postcss": "^8.5.29",
+        "postcss-loader": "^8.1.1",
         "sass": "^1.55.0",
         "sass-loader": "^17.0.1",
         "stylelint": "^17.16.0",
         "stylelint-config-sass-guidelines": "^13.0.0",
-        "webpack": "^5.74.0",
+        "webpack": "^5.101.0",
         "webpack-cli": "^7.2.3"
     },
     "browserslist": [
