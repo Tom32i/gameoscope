@@ -1,6 +1,7 @@
 {
-  "path": "build/**/*.@(png|jpg|jpeg)",
-  "ignore": "build/download/**/*",
+  "path": "var/cache/games/**/*",
+  "formats": ["png", "jpeg"],
+  "cacheDir": "var/optimage-cache",
   "cache": {
     "memory":  2048
   },
